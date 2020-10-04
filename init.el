@@ -1,6 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/config/")
-
 (require 'init-packages)
+(require 'init-ui)
 
 (setq ring-bell-function 'ignore)
 
@@ -38,13 +38,6 @@
     ("abbr" "abbreviation")
     ))
 
-;; hide tool bar
-(tool-bar-mode -1)
-;; hide scroll bar
-(scroll-bar-mode -1)
-;; skip startup page
-(setq inhibit-splash-screen t)
-
 ;; show line number
 (global-linum-mode t)
 
@@ -57,17 +50,11 @@
 ;; show recent files
 (recentf-mode t)
 
-
-;; cursor style
-(setq-default cursor-type 'bar)
-
 ;; no backup files
 (setq make-backup-files nil)
 
 ;; disable autosave
 (setq auto-save-default nil)
-
-
 
 ;; recent file
 (require 'recentf)
@@ -77,16 +64,8 @@
 ;; delete selected content
 (delete-selection-mode t)
 
-;; fullscreen startup
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
-
 ;; highlight matching brackets
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-
-;; highlight current line
-(global-hl-line-mode t)
-
-
 
 ;; find source
 (global-set-key (kbd "C-h C-f") 'find-function)

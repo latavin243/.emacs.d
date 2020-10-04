@@ -61,7 +61,6 @@
 ;; (setq search-default-mode #'char-fold-to-regexp)
 
 ;; smartparens config
-(require 'smartparens-config)
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 
