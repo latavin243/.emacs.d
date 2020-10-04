@@ -1,65 +1,9 @@
-;; package management
-(require 'package)
-(package-initialize)
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+(add-to-list 'load-path "~/.emacs.d/config/")
 
-;; cl - Common Lisp Extension
-(require 'cl)
-(setq byte-compile-warnings '(cl-functions))
+(require 'init-packages)
 
-;; Add Packages
-(defvar my/packages
-  '(
-    ;; --- Auto-completion ---
-    company
-    ;; --- Better Editor ---
-    hungry-delete
-    swiper
-    counsel
-    smartparens
-    ;; --- Major Mode ---
-    js2-mode
-    ;; --- Minor Mode ---
-    nodejs-repl
-    exec-path-from-shell
-    ;; --- Themes ---
-    monokai-theme
+(setq ring-bell-function 'ignore)
 
-    ;; --- Others ---
-    
-    ;; solarized-theme
-    ) "Default packages")
-
-(setq package-selected-packages my/packages)
-
-(defun my/packages-installed-p ()
-  (loop for pkg in my/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
-;; exec path from shell
-;; Find Executable Path on OS X
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
-;; hungry delete package config
-(require 'hungry-delete)
-(global-hungry-delete-mode)
-
-;; swiper config
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-;; enable this if you want `swiper' to use it
-;; (setq search-default-mode #'char-fold-to-regexp)
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -77,22 +21,22 @@
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
-;; smartparens config
-(require 'smartparens-config)
-;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(smartparens-global-mode t)
-
-;; js files config
-(setq auto-mode-alist
-      (append
-       '(("\\.js\\'" . js2-mode))
-       auto-mode-alist))
 
 ;; org mode
+;; org code blocks highlight
+(require 'org)
+(setq org-src-fontify-natively t)
 (setq org-agenda-files '("~/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 ;; --- none pacakge config ---
+
+;; abbreviation
+(setq-default abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("abbr" "abbreviation")
+    ))
 
 ;; hide tool bar
 (tool-bar-mode -1)
@@ -113,8 +57,6 @@
 ;; show recent files
 (recentf-mode t)
 
-;; company mode
-(global-company-mode t)
 
 ;; cursor style
 (setq-default cursor-type 'bar)
@@ -122,9 +64,10 @@
 ;; no backup files
 (setq make-backup-files nil)
 
-;; org code blocks highlight
-(require 'org)
-(setq org-src-fontify-natively t)
+;; disable autosave
+(setq auto-save-default nil)
+
+
 
 ;; recent file
 (require 'recentf)
@@ -143,14 +86,15 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
-;; theme
-(load-theme 'monokai t)
+
 
 ;; find source
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
+;; auto load outer change
+(global-auto-revert-mode t)
 
 ;; package management
 (custom-set-variables
