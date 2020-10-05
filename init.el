@@ -7,6 +7,13 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+;; indent buffer
+(defun indent-buffer ()
+  (interactive)
+  (save-excursion
+    ((indent-region (point-min) (point-max))
+     (message "buffer indented"))))
+
 ;; === load config files
 (require 'init-packages)
 (require 'init-ui)

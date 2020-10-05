@@ -27,6 +27,7 @@
     ;; --- Themes ---
     monokai-theme
     ;; --- Others ---
+    reveal-in-osx-finder
     ) "Default packages")
 
 (setq package-selected-packages my/packages)

@@ -30,4 +30,11 @@
 ;; find git dir files
 (global-set-key (kbd "C-c p") 'counsel-git)
 
+;; hippie complete
+(global-set-key (kbd "s-/") 'hippie-expand)
+
+;; lazy load dired mode kbd
+(with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+
 (provide 'init-keybindings)
