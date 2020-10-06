@@ -96,5 +96,8 @@
   (call-interactively 'occur))
 (global-set-key (kbd "M-s o") 'occur-dwim)
 
+;; encoding to utf-8
+(set-language-environment "UTF-8")
+
 ;; file fin
 (provide 'init-better-defaults)

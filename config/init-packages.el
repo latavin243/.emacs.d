@@ -33,7 +33,12 @@
     monokai-theme
     ;; --- Others ---
     reveal-in-osx-finder
-    ) "Default packages")
+    org-pomodoro
+    helm-ag
+    flycheck
+    yasnippet
+    auto-yasnippet
+    ) "Custom packages.")
 
 (setq package-selected-packages my/packages)
 
@@ -150,5 +155,20 @@
 ;; (global-set-key (kbd "M-s e") 'iedit-mode)
 ;; c-; will do
 
+;; helm-ag
+(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
+;; flycheck
+(global-flycheck-mode t)
+
+;; yasnippet config
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; auto yasnippet
+(global-set-key (kbd "H-w") #'aya-create)
+(global-set-key (kbd "H-y") #'aya-expand)
+
 ;; file fin
 (provide 'init-packages)
+;;; init-packages ends here
