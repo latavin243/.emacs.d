@@ -14,7 +14,7 @@
     ;; --- Auto-completion ---
     company
     ;; --- Better Editor ---
-    hungry-delete
+    ;; hungry-delete
     swiper
     counsel
     smartparens
@@ -40,6 +40,9 @@
     auto-yasnippet
     ;; --- vim ---
     evil
+    evil-leader
+    window-numbering
+    powerline
     ) "Custom packages.")
 
 (setq package-selected-packages my/packages)
@@ -63,8 +66,8 @@
 (setq exec-path-from-shell-check-startup-files nil)
 
 ;; hungry delete package config
-(require 'hungry-delete)
-(global-hungry-delete-mode)
+;; (require 'hungry-delete)
+;; (global-hungry-delete-mode)
 
 ;; swiper config
 (ivy-mode 1)
@@ -173,6 +176,30 @@
 
 ;; evil mode
 (evil-mode 1)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; (setq evil-want-C-u-scroll t)
+(global-evil-leader-mode)
+(evil-leader/set-key
+  "ff" 'find-file
+  "bb" 'switch-to-buffer
+  "0"  'select-window-0
+  "1"  'select-window-1
+  "2"  'select-window-2
+  "3"  'select-window-3
+  "w/" 'split-window-right
+  "w-" 'split-window-below
+  ":"  'counsel-M-x
+  "wM" 'delete-other-windows
+  )
+
+;; window numbering
+(window-numbering-mode 1)
+
+;; powerline
+(require 'powerline)
+(powerline-default-theme)
+
 ;; file fin
 (provide 'init-packages)
 ;;; init-packages ends here
