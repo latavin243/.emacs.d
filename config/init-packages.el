@@ -38,6 +38,8 @@
     flycheck
     yasnippet
     auto-yasnippet
+    ;; --- vim ---
+    evil
     ) "Custom packages.")
 
 (setq package-selected-packages my/packages)
@@ -169,6 +171,8 @@
 (global-set-key (kbd "H-w") #'aya-create)
 (global-set-key (kbd "H-y") #'aya-expand)
 
+;; evil mode
+(evil-mode 1)
 ;; file fin
 (provide 'init-packages)
 ;;; init-packages ends here

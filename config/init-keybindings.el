@@ -44,5 +44,8 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
+;; c-w to kill word
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
 ;; file fin
 (provide 'init-keybindings)
