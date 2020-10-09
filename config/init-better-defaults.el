@@ -1,6 +1,9 @@
 ;; disable ring bell
 (setq ring-bell-function 'ignore)
 
+;; cursor type
+(setq cursor-type 'bar)
+
 ;; show line number
 (global-linum-mode t)
 

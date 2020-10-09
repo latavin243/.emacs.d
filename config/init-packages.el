@@ -1,4 +1,4 @@
-;; package management
+;;; package management
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
@@ -42,7 +42,11 @@
     evil
     evil-leader
     window-numbering
-    powerline
+    powerline-evil
+    evil-nerd-commenter
+    which-key
+    ;; package management
+    use-package
     ) "Custom packages.")
 
 (setq package-selected-packages my/packages)
@@ -179,27 +183,59 @@
 (setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
 ;; (setq evil-want-C-u-scroll t)
-(global-evil-leader-mode)
-(evil-leader/set-key
-  "ff" 'find-file
-  "bb" 'switch-to-buffer
-  "0"  'select-window-0
-  "1"  'select-window-1
-  "2"  'select-window-2
-  "3"  'select-window-3
-  "w/" 'split-window-right
-  "w-" 'split-window-below
-  ":"  'counsel-M-x
-  "wM" 'delete-other-windows
+
+;; surround
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
+;; commenter
+(use-package evil-leader
+  :ensure t
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-key
+    "sf" 'counsel-rg
+    "ff" 'find-file
+    "bb" 'switch-to-buffer
+    "w/" 'split-window-right
+    "w-" 'split-window-below
+    ":"  'counsel-M-x
+    "wM" 'delete-other-windows
+
+    "cc" 'evilnc-comment-or-uncomment-lines
+    "ci" 'evilnc-comment-or-uncomment-lines
+    "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+    ;; "cc" 'evilnc-copy-and-comment-lines
+    "cp" 'evilnc-comment-or-uncomment-paragraphs
+    "cr" 'comment-or-uncomment-region
+    "cv" 'evilnc-toggle-invert-comment-line-by-line
+    "."  'evilnc-copy-and-comment-operator
+    "\\" 'evilnc-comment-operator
+    )
+  )
+(define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+;; which key
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  )
+
+;; auto package update
+(use-package auto-package-update
+  :ensure t
+  :custom
+  (auto-package-update-delete-old-versions t)
   )
 
 ;; window numbering
 (window-numbering-mode 1)
 
-;; powerline
-(require 'powerline)
-(powerline-default-theme)
+;; powerline-evil
+(require 'powerline-evil)
 
 ;; file fin
 (provide 'init-packages)
-;;; init-packages ends here
+;;; init-packages.el ends here
