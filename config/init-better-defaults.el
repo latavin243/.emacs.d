@@ -102,5 +102,10 @@
 ;; encoding to utf-8
 (set-language-environment "UTF-8")
 
+;; 4 spaces to replace table
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 ;; file fin
 (provide 'init-better-defaults)

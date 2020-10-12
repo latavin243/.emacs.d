@@ -11,6 +11,8 @@
 ;; Add Packages
 (defvar my/packages
   '(
+    ;; --- package management ---
+    use-package
     ;; --- Auto-completion ---
     company
     ;; --- Better Editor ---
@@ -35,18 +37,14 @@
     reveal-in-osx-finder
     org-pomodoro
     helm-ag
-    flycheck
     yasnippet
     auto-yasnippet
     ;; --- vim ---
-    evil
-    evil-leader
     window-numbering
     powerline-evil
     evil-nerd-commenter
     which-key
-    ;; package management
-    use-package
+    undo-tree
     ) "Custom packages.")
 
 (setq package-selected-packages my/packages)
@@ -83,6 +81,7 @@
 ;; smartparens config
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
+
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 ;; js files config
@@ -126,14 +125,25 @@
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
 ;; company mode
-(global-company-mode t)
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode)
+  (setq company-idle-delay 0.2)
+  (setq company-selection-wrap-around t)
+  (define-key company-active-map [tab] 'company-complete)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; theme
 (load-theme 'monokai t)
 
 ;; popwin config
-(require 'popwin)
-(popwin-mode t)
+(use-package popwin
+  :ensure t
+  :config
+  (popwin-mode t)
+  )
 
 ;; counsel-imenu
 (defun js2-imenu-make-index ()
@@ -168,7 +178,11 @@
 (global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
 
 ;; flycheck
-(global-flycheck-mode t)
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode t)
+  )
 
 ;; yasnippet config
 (yas-reload-all)
@@ -179,10 +193,14 @@
 (global-set-key (kbd "H-y") #'aya-expand)
 
 ;; evil mode
-(evil-mode 1)
-(setcdr evil-insert-state-map nil)
-(define-key evil-insert-state-map [escape] 'evil-normal-state)
-;; (setq evil-want-C-u-scroll t)
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1)
+  (setcdr evil-insert-state-map nil)
+  (define-key evil-insert-state-map [escape] 'evil-normal-state)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+  )
 
 ;; surround
 (use-package evil-surround
@@ -197,13 +215,20 @@
   (global-evil-leader-mode)
   (evil-leader/set-key
     "sf" 'counsel-rg
-    "ff" 'find-file
+    ;; "ff" 'find-file
+    "ff" 'counsel-git
     "bb" 'switch-to-buffer
     "w/" 'split-window-right
     "w-" 'split-window-below
     ":"  'counsel-M-x
     "wM" 'delete-other-windows
-
+    )
+  )
+;; evil nerd commenter
+(use-package evil-nerd-commenter
+  :ensure t
+  :config
+  (evil-leader/set-key
     "cc" 'evilnc-comment-or-uncomment-lines
     "ci" 'evilnc-comment-or-uncomment-lines
     "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
@@ -229,13 +254,94 @@
   :custom
   (auto-package-update-delete-old-versions t)
   )
+;; undo and redo
+(use-package undo-tree
+  :ensure t
+  :config
+  (turn-on-undo-tree-mode)
+  )
+(define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
+
+;; neotree
+(use-package neotree
+  :ensure t
+  :config
+  (evil-leader/set-key
+    "ee" 'neotree-toggle
+    )
+  (add-hook 'neotree-mode-hook
+	    (lambda ()
+	      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+	      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+	      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+	      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+	      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+	      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+	      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+
+	      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+	      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+
+	      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+	      )
+	    )
+  )
 
 ;; window numbering
 (window-numbering-mode 1)
 
+;; ace window, jump window
+;; (use-package ace-window
+;;   :ensure t
+;;   :config
+;;   (evil-leader/set-key
+;;     "qq" 'ace-window
+;;     ))
+
+;; jump window like tmux prefix-q
+(use-package switch-window
+  :ensure t
+  :config
+  ;; (setq switch-window-shortcut-appearance 'asciiart)
+  (evil-leader/set-key
+    "qq" 'switch-window
+    ))
+
+
 ;; powerline-evil
-(require 'powerline-evil)
+(use-package powerline-evil
+  :ensure t)
+
+;; golang
+(use-package go-mode
+  :ensure t
+  :config
+  (setq gofmt-command "gofmt")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  )
+
+;; lsp
+(use-package lsp-mode
+  :hook (
+    (go-mode . lsp)
+  )
+  :commands lsp
+  )
+
+;; jump to declearation
+(use-package dumb-jump
+  :ensure t
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+  )
+
+;; nyan cat
+(use-package nyan-mode
+  :ensure t
+  :init (setq nyan-animate-nyancat t
+  	     nyan-bar-length 16
+  	     nyan-wavy-trail t)
+  :hook ((after-init . nyan-mode)))
 
 ;; file fin
 (provide 'init-packages)
-;;; init-packages.el ends here
