@@ -4,7 +4,7 @@
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
-;; cl - Common Lisp Extension
+  ;; cl - Common Lisp Extension
 (require 'cl)
 (setq byte-compile-warnings '(cl-functions))
 
@@ -19,9 +19,6 @@
     ;; hungry-delete
     swiper
     counsel
-    smartparens
-    popwin
-    expand-region
     iedit
     ;; --- Major Mode ---
     js2-mode
@@ -32,13 +29,15 @@
     ;; --- web ---
     web-mode
     ;; --- Themes ---
-    dakrone-theme
+    ;; monokai-theme
+    srcery-theme
     ;; --- Others ---
     reveal-in-osx-finder
     org-pomodoro
     helm-ag
     yasnippet
     auto-yasnippet
+    smartparens
     ;; --- vim ---
     window-numbering
     powerline-evil
@@ -80,7 +79,7 @@
 
 ;; smartparens config
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(smartparens-global-mode t)
+  (smartparens-global-mode t)
 
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
@@ -136,7 +135,7 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; theme
-(load-theme 'dakrone t)
+(load-theme 'srcery t)
 
 ;; popwin config
 (use-package popwin
@@ -168,7 +167,11 @@
 (global-set-key (kbd "M-s i") 'counsel-imenu)
 
 ;; expand region config
-(global-set-key (kbd "C-=") 'er/expand-region)
+(use-package expand-region
+  :ensure t
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region)
+  )
 
 ;; iedit
 ;; (global-set-key (kbd "M-s e") 'iedit-mode)
@@ -290,14 +293,6 @@
 ;; window numbering
 (window-numbering-mode 1)
 
-;; ace window, jump window
-;; (use-package ace-window
-;;   :ensure t
-;;   :config
-;;   (evil-leader/set-key
-;;     "qq" 'ace-window
-;;     ))
-
 ;; jump window like tmux prefix-q
 (use-package switch-window
   :ensure t
@@ -335,14 +330,14 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   )
 
-;; nyan cat
-(use-package nyan-mode
-  :ensure t
-  :init (setq
-         nyan-animate-nyancat t
-  	     nyan-bar-length 16
-         )
-  :hook ((after-init . nyan-mode)))
+;; ;; nyan cat
+;; (use-package nyan-mode
+;;   :ensure t
+;;   :init (setq
+;;          nyan-animate-nyancat t
+;;   	     nyan-bar-length 16
+;;          )
+;;   :hook ((after-init . nyan-mode)))
 
 ;; restart emacs
 (use-package restart-emacs
