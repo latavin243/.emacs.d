@@ -2,7 +2,7 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 ;; cl - Common Lisp Extension
 (require 'cl)
@@ -32,7 +32,7 @@
     ;; --- web ---
     web-mode
     ;; --- Themes ---
-    monokai-theme
+    dakrone-theme
     ;; --- Others ---
     reveal-in-osx-finder
     org-pomodoro
@@ -51,8 +51,8 @@
 
 (defun my/packages-installed-p ()
   (loop for pkg in my/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
+	    when (not (package-installed-p pkg)) do (return nil)
+	    finally (return t)))
 
 (unless (my/packages-installed-p)
   (message "%s" "Refreshing package database...")
@@ -88,9 +88,9 @@
 (setq auto-mode-alist
       (append
        '(
-	 ("\\.js\\'" . js2-mode)
-	 ("\\.html\\'" . web-mode)
-	 )
+	     ("\\.js\\'" . js2-mode)
+	     ("\\.html\\'" . web-mode)
+	     )
        auto-mode-alist))
 
 ;; web-mode
@@ -106,13 +106,13 @@
   ;; web development
   (if (or (eq major-mode 'js-mode) (eq major-mode 'js2-mode))
       (progn
-	(setq js-indent-level (if (= js-indent-level 2) 4 2))
-	(setq js2-basic-offset (if (= js2-basic-offset 2) 4 2))))
+	    (setq js-indent-level (if (= js-indent-level 2) 4 2))
+	    (setq js2-basic-offset (if (= js2-basic-offset 2) 4 2))))
 
   (if (eq major-mode 'web-mode)
       (progn (setq web-mode-markup-indent-offset (if (= web-mode-markup-indent-offset 2) 4 2))
-	     (setq web-mode-css-indent-offset (if (= web-mode-css-indent-offset 2) 4 2))
-	     (setq web-mode-code-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
+	         (setq web-mode-css-indent-offset (if (= web-mode-css-indent-offset 2) 4 2))
+	         (setq web-mode-code-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
   (if (eq major-mode 'css-mode)
       (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
 
@@ -136,7 +136,7 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; theme
-(load-theme 'monokai t)
+(load-theme 'dakrone t)
 
 ;; popwin config
 (use-package popwin
@@ -151,19 +151,19 @@
   (save-excursion
     ;; (setq imenu-generic-expression '((nil "describe\\(\"\\(.+\\)\"" 1)))
     (imenu--generic-function '(("describe" "\\s-*describe\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			       ("it" "\\s-*it\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			       ("test" "\\s-*test\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			       ("before" "\\s-*before\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			       ("after" "\\s-*after\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			       ("Function" "function[ \t]+\\([a-zA-Z0-9_$.]+\\)[ \t]*(" 1)
-			       ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
-			       ("Function" "^var[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
-			       ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*()[ \t]*{" 1)
-			       ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*:[ \t]*function[ \t]*(" 1)
-			       ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)))))
+			                   ("it" "\\s-*it\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
+			                   ("test" "\\s-*test\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
+			                   ("before" "\\s-*before\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
+			                   ("after" "\\s-*after\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
+			                   ("Function" "function[ \t]+\\([a-zA-Z0-9_$.]+\\)[ \t]*(" 1)
+			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
+			                   ("Function" "^var[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
+			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*()[ \t]*{" 1)
+			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*:[ \t]*function[ \t]*(" 1)
+			                   ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)))))
 (add-hook 'js2-mode-hook
-	  (lambda ()
-	    (setq imenu-create-index-function 'js2-imenu-make-index)))
+	      (lambda ()
+	        (setq imenu-create-index-function 'js2-imenu-make-index)))
 
 (global-set-key (kbd "M-s i") 'counsel-imenu)
 
@@ -270,21 +270,21 @@
     "ee" 'neotree-toggle
     )
   (add-hook 'neotree-mode-hook
-	    (lambda ()
-	      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-	      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
-	      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
-	      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-	      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
-	      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
-	      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+	        (lambda ()
+	          (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+	          (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+	          (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+	          (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+	          (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+	          (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+	          (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
 
-	      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-	      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+	          (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+	          (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
 
-	      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-	      )
-	    )
+	          (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+	          )
+	        )
   )
 
 ;; window numbering
@@ -323,8 +323,8 @@
 ;; lsp
 (use-package lsp-mode
   :hook (
-    (go-mode . lsp)
-  )
+         (go-mode . lsp)
+         )
   :commands lsp
   )
 
@@ -338,10 +338,45 @@
 ;; nyan cat
 (use-package nyan-mode
   :ensure t
-  :init (setq nyan-animate-nyancat t
+  :init (setq
+         nyan-animate-nyancat t
   	     nyan-bar-length 16
-  	     nyan-wavy-trail t)
+         )
   :hook ((after-init . nyan-mode)))
+
+;; restart emacs
+(use-package restart-emacs
+  :ensure t
+  )
+
+;; magit
+(use-package magit
+  :ensure t
+  )
+
+;; doom modeline
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  )
+
+;; startup dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title "Happy Hacking!")
+  (setq dashboard-startup-banner 'official)
+  (setq dashboard-center-content t)
+  ;;(setq dashboard-show-shortcuts nil)
+  (setq dashboard-items '(
+                          (recents  . 10)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          ;;(agenda . 5)
+                          ;;(registers . 5)
+                          ))
+  )
 
 ;; file fin
 (provide 'init-packages)
