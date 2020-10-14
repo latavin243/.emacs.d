@@ -1,64 +1,56 @@
-;;; package management
-(require 'package)
-(package-initialize)
+;;; init-package.el -- package management
+;;; Commentary:
+;; latavin's Emacs package config
+;;; Code:
+
+;; use-package
+(straight-use-package 'use-package)
+(defvar use-package-always-ensure t)
+
+(straight-use-package 'general)
+(use-package general
+  :init
+  (defalias 'gsetq #'general-setq)
+  (defalias 'gsetq-local #'general-setq-local)
+  (defalias 'gsetq-default #'general-setq-default)
+  )
+
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
-  ;; cl - Common Lisp Extension
+;; important packages
+(straight-use-package 'swiper)
+(straight-use-package 'ivy)
+(straight-use-package 'ivy-xref)
+(straight-use-package 'ivy-hydra)
+(straight-use-package 'counsel)
+(straight-use-package 'iedit)
+(straight-use-package 'helm-ag)
+(straight-use-package 'yasnippet)
+(straight-use-package 'auto-yasnippet)
+(straight-use-package 'smartparens)
+;; theme
+(straight-use-package 'srcery-theme)
+;; vim related
+(straight-use-package 'window-numbering)
+(straight-use-package 'powerline-evil)
+(straight-use-package 'evil-nerd-commenter)
+(straight-use-package 'which-key)
+(straight-use-package 'undo-tree)
+
+;; others
+(straight-use-package 'js2-mode)
+(straight-use-package 'nodejs-repl)
+(straight-use-package 'exec-path-from-shell)
+(straight-use-package 'js2-refactor)
+(straight-use-package 'web-mode)
+(straight-use-package 'reveal-in-osx-finder)
+(straight-use-package 'org-pomodoro)
+
+;; cl - Common Lisp Extension
 (require 'cl)
-(setq byte-compile-warnings '(cl-functions))
-
-;; Add Packages
-(defvar my/packages
-  '(
-    ;; --- package management ---
-    use-package
-    ;; --- Auto-completion ---
-    company
-    ;; --- Better Editor ---
-    ;; hungry-delete
-    swiper
-    counsel
-    iedit
-    ;; --- Major Mode ---
-    js2-mode
-    ;; --- Minor Mode ---
-    nodejs-repl
-    exec-path-from-shell
-    js2-refactor
-    ;; --- web ---
-    web-mode
-    ;; --- Themes ---
-    ;; monokai-theme
-    srcery-theme
-    ;; --- Others ---
-    reveal-in-osx-finder
-    org-pomodoro
-    helm-ag
-    yasnippet
-    auto-yasnippet
-    smartparens
-    ;; --- vim ---
-    window-numbering
-    powerline-evil
-    evil-nerd-commenter
-    which-key
-    undo-tree
-    ) "Custom packages.")
-
-(setq package-selected-packages my/packages)
-
-(defun my/packages-installed-p ()
-  (loop for pkg in my/packages
-	    when (not (package-installed-p pkg)) do (return nil)
-	    finally (return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+(require 'loadhist)
+(file-dependents (feature-file 'cl))
 
 ;; exec path from shell
 ;; Find Executable Path on OS X
@@ -126,13 +118,18 @@
 ;; company mode
 (use-package company
   :ensure t
+  :init
+  (setq
+   company-idle-delay 0
+   company-minimum-prefix-length 1
+   company-selection-wrap-around t
+   )
   :config
   (global-company-mode)
-  (setq company-idle-delay 0.2)
-  (setq company-selection-wrap-around t)
   (define-key company-active-map [tab] 'company-complete)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  )
 
 ;; theme
 (load-theme 'srcery t)
@@ -198,11 +195,18 @@
 ;; evil mode
 (use-package evil
   :ensure t
+  :init
+  (setq
+   evil-insert-state-cursor 'bar
+   evil-normal-state-cursor 'box
+   evil-emacs-state-cursor 'bar
+    )
   :config
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+  (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
   )
 
 ;; surround
@@ -216,6 +220,7 @@
   :ensure t
   :config
   (global-evil-leader-mode)
+  (evil-leader/set-leader ",")
   (evil-leader/set-key
     "sf" 'counsel-rg
     ;; "ff" 'find-file
@@ -305,18 +310,21 @@
 
 ;; powerline-evil
 (use-package powerline-evil
-  :ensure t)
+  :ensure t
+  )
 
 ;; golang
 (use-package go-mode
   :ensure t
-  :config
+  :init
   (setq gofmt-command "gofmt")
+  :config
   (add-hook 'before-save-hook 'gofmt-before-save)
   )
 
 ;; lsp
 (use-package lsp-mode
+  :ensure t
   :hook (
          (go-mode . lsp)
          )
@@ -330,14 +338,14 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   )
 
-;; ;; nyan cat
-;; (use-package nyan-mode
-;;   :ensure t
-;;   :init (setq
-;;          nyan-animate-nyancat t
-;;   	     nyan-bar-length 16
-;;          )
-;;   :hook ((after-init . nyan-mode)))
+;; nyan cat
+(use-package nyan-mode
+  :ensure t
+  :init (setq
+         nyan-animate-nyancat t
+  	     nyan-bar-length 16
+         )
+  :hook ((after-init . nyan-mode)))
 
 ;; restart emacs
 (use-package restart-emacs
@@ -358,8 +366,7 @@
 ;; startup dashboard
 (use-package dashboard
   :ensure t
-  :config
-  (dashboard-setup-startup-hook)
+  :init
   (setq dashboard-banner-logo-title "Happy Hacking!")
   (setq dashboard-startup-banner 'official)
   (setq dashboard-center-content t)
@@ -371,7 +378,33 @@
                           ;;(agenda . 5)
                           ;;(registers . 5)
                           ))
+  :config
+  (dashboard-setup-startup-hook)
   )
 
-;; file fin
+(use-package auto-highlight-symbol
+  :ensure t
+  )
+
+(use-package evil-terminal-cursor-changer
+  :ensure t
+  :init
+  (setq
+   evil-insert-state-cursor 'bar
+   evil-normal-state-cursor 'box
+   evil-emacs-state-cursor 'bar
+   )
+  :config
+  (evil-terminal-cursor-changer-activate)
+  )
+
+(use-package ace-jump-mode
+  :ensure t
+  :config
+  (evil-leader/set-key
+    "ss" 'ace-jump-mode
+    )
+  )
+
 (provide 'init-packages)
+;;; init-packages.el ends here

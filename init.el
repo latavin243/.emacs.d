@@ -1,6 +1,19 @@
+
 (add-to-list 'load-path "~/.emacs.d/config/")
 
-;; === custom functions
+;; === straight-use-package
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 ;; open config file command
 (defun open-init-file()
@@ -9,6 +22,7 @@
 
 ;; indent buffer
 (defun indent-buffer ()
+  "Auto init current buffer."
   (interactive)
   (save-excursion
     ((indent-region (point-min) (point-max))
@@ -21,5 +35,4 @@
 (require 'init-org)
 (require 'init-keybindings)
 
-(setq custom-file (expand-file-name "config/custom.el" user-emacs-directory))
-(load custom-file 'no-error 'no-message)
+;;; init.el ends here
