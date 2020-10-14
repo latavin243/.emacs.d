@@ -19,25 +19,15 @@
 			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 ;; important packages
-(straight-use-package 'swiper)
-(straight-use-package 'ivy)
-(straight-use-package 'ivy-xref)
-(straight-use-package 'ivy-hydra)
 (straight-use-package 'counsel)
-(straight-use-package 'iedit)
-(straight-use-package 'helm-ag)
 (straight-use-package 'yasnippet)
 (straight-use-package 'auto-yasnippet)
-(straight-use-package 'smartparens)
 ;; theme
 (straight-use-package 'srcery-theme)
 ;; vim related
 (straight-use-package 'window-numbering)
 (straight-use-package 'powerline-evil)
 (straight-use-package 'evil-nerd-commenter)
-(straight-use-package 'which-key)
-(straight-use-package 'undo-tree)
-
 ;; others
 (straight-use-package 'js2-mode)
 (straight-use-package 'nodejs-repl)
@@ -63,15 +53,30 @@
 ;; (global-hungry-delete-mode)
 
 ;; swiper config
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-;; enable this if you want `swiper' to use it
-;; (setq search-default-mode #'char-fold-to-regexp)
+(straight-use-package 'swiper)
+(use-package swiper
+
+  )
+(straight-use-package 'ivy)
+(use-package ivy
+  :bind (
+  "C-c C-r" . 'ivy-resume
+  )
+  :init
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  )
+(straight-use-package 'ivy-xref)
+(straight-use-package 'ivy-hydra)
 
 ;; smartparens config
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+(straight-use-package 'smartparens)
+(use-package smartparens
+  :config
   (smartparens-global-mode t)
+  )
 
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
@@ -171,10 +176,12 @@
   )
 
 ;; iedit
+(straight-use-package 'iedit)
 ;; (global-set-key (kbd "M-s e") 'iedit-mode)
 ;; c-; will do
 
 ;; helm-ag
+(straight-use-package 'helm-ag)
 (global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
 
 ;; flycheck
@@ -250,6 +257,7 @@
   )
 (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
 ;; which key
+(straight-use-package 'which-key)
 (use-package which-key
   :ensure t
   :config
@@ -262,7 +270,9 @@
   :custom
   (auto-package-update-delete-old-versions t)
   )
+
 ;; undo and redo
+(straight-use-package 'undo-tree)
 (use-package undo-tree
   :ensure t
   :config
