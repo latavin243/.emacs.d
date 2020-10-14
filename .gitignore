@@ -1,3 +1,5 @@
 elpa
 recentf
 transient
+straight
+config/flycheck_init-packages.el
