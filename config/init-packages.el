@@ -122,7 +122,6 @@
 
 ;; company mode
 (use-package company
-  :ensure t
   :init
   (setq
    company-idle-delay 0
@@ -141,7 +140,6 @@
 
 ;; popwin config
 (use-package popwin
-  :ensure t
   :config
   (popwin-mode t)
   )
@@ -170,7 +168,6 @@
 
 ;; expand region config
 (use-package expand-region
-  :ensure t
   :config
   (global-set-key (kbd "C-=") 'er/expand-region)
   )
@@ -186,7 +183,6 @@
 
 ;; flycheck
 (use-package flycheck
-  :ensure t
   :config
   (global-flycheck-mode t)
   )
@@ -201,7 +197,6 @@
 
 ;; evil mode
 (use-package evil
-  :ensure t
   :init
   (setq
    evil-insert-state-cursor 'bar
@@ -218,13 +213,11 @@
 
 ;; surround
 (use-package evil-surround
-  :ensure t
   :config
   (global-evil-surround-mode 1))
 
 ;; commenter
 (use-package evil-leader
-  :ensure t
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader ",")
@@ -241,7 +234,6 @@
   )
 ;; evil nerd commenter
 (use-package evil-nerd-commenter
-  :ensure t
   :config
   (evil-leader/set-key
     "cc" 'evilnc-comment-or-uncomment-lines
@@ -259,14 +251,12 @@
 ;; which key
 (straight-use-package 'which-key)
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode)
   )
 
 ;; auto package update
 (use-package auto-package-update
-  :ensure t
   :custom
   (auto-package-update-delete-old-versions t)
   )
@@ -274,7 +264,6 @@
 ;; undo and redo
 (straight-use-package 'undo-tree)
 (use-package undo-tree
-  :ensure t
   :config
   (turn-on-undo-tree-mode)
   )
@@ -282,7 +271,6 @@
 
 ;; neotree
 (use-package neotree
-  :ensure t
   :config
   (evil-leader/set-key
     "ee" 'neotree-toggle
@@ -310,7 +298,6 @@
 
 ;; jump window like tmux prefix-q
 (use-package switch-window
-  :ensure t
   :config
   ;; (setq switch-window-shortcut-appearance 'asciiart)
   (evil-leader/set-key
@@ -320,12 +307,10 @@
 
 ;; powerline-evil
 (use-package powerline-evil
-  :ensure t
   )
 
 ;; golang
 (use-package go-mode
-  :ensure t
   :mode "\\.go\\'"
   :init
   (setq gofmt-command "gofmt")
@@ -338,7 +323,6 @@
 
 ;; lsp
 (use-package lsp-mode
-  :ensure t
   :hook (
          (go-mode . lsp)
          )
@@ -347,14 +331,12 @@
 
 ;; jump to declearation
 (use-package dumb-jump
-  :ensure t
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   )
 
 ;; nyan cat
 (use-package nyan-mode
-  :ensure t
   :init (setq
          nyan-animate-nyancat t
   	     nyan-bar-length 16
@@ -363,23 +345,19 @@
 
 ;; restart emacs
 (use-package restart-emacs
-  :ensure t
   )
 
 ;; magit
 (use-package magit
-  :ensure t
   )
 
 ;; doom modeline
 (use-package doom-modeline
-  :ensure t
   :hook (after-init . doom-modeline-mode)
   )
 
 ;; startup dashboard
 (use-package dashboard
-  :ensure t
   :init
   (setq dashboard-banner-logo-title "Happy Hacking!")
   (setq dashboard-startup-banner 'official)
@@ -397,11 +375,9 @@
   )
 
 (use-package auto-highlight-symbol
-  :ensure t
   )
 
 (use-package evil-terminal-cursor-changer
-  :ensure t
   :init
   (setq
    evil-insert-state-cursor 'bar
@@ -413,7 +389,6 @@
   )
 
 (use-package ace-jump-mode
-  :ensure t
   :config
   (evil-leader/set-key
     "ss" 'ace-jump-mode
