@@ -326,10 +326,14 @@
 ;; golang
 (use-package go-mode
   :ensure t
+  :mode "\\.go\\'"
   :init
   (setq gofmt-command "gofmt")
+  :hook
+  (
+  (before-save-hook . gofmt-before-save)
+   )
   :config
-  (add-hook 'before-save-hook 'gofmt-before-save)
   )
 
 ;; lsp
