@@ -60,8 +60,8 @@
 (straight-use-package 'ivy)
 (use-package ivy
   :bind (
-  "C-c C-r" . 'ivy-resume
-  )
+         "C-c C-r" . 'ivy-resume
+         )
   :init
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
@@ -207,7 +207,7 @@
    evil-insert-state-cursor 'bar
    evil-normal-state-cursor 'box
    evil-emacs-state-cursor 'bar
-    )
+   )
   :config
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
