@@ -36,3 +36,5 @@
 (require 'init-keybindings)
 
 ;;; init.el ends here
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

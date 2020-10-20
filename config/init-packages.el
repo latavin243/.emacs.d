@@ -175,10 +175,6 @@
 ;; (global-set-key (kbd "M-s e") 'iedit-mode)
 ;; c-; will do
 
-;; helm-ag
-(straight-use-package 'helm-ag)
-(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
-
 ;; flycheck
 (use-package flycheck
   :ensure t
@@ -300,9 +296,6 @@
 	        )
   )
 
-;; window numbering
-(window-numbering-mode 1)
-
 ;; jump window like tmux prefix-q
 (use-package switch-window
   :ensure t
@@ -332,6 +325,15 @@
             (setq indent-tabs-mode 1)))
   )
 
+;; json
+(use-package json-mode)
+
+;; yaml
+(use-package yaml-mode)
+
+;; pb
+(use-package protobuf-mode)
+
 ;; lsp
 (use-package lsp-mode
   :ensure t
@@ -353,7 +355,7 @@
   :ensure t
   :init (setq
          nyan-animate-nyancat t
-  	     nyan-bar-length 16
+  	     nyan-bar-length 10
          )
   :hook ((after-init . nyan-mode)))
 
@@ -367,6 +369,13 @@
   :ensure t
   )
 
+;; git gutter
+(use-package git-gutter+
+  :ensure t
+  :config
+  (progn (global-git-gutter+-mode))
+  )
+
 ;; doom modeline
 (use-package doom-modeline
   :ensure t
@@ -378,7 +387,7 @@
 (use-package dashboard
   :ensure t
   :init
-  (setq dashboard-banner-logo-title "Happy Hacking!")
+  (setq dashboard-banner-logo-title "Happy Hacking")
   (setq dashboard-startup-banner 'official)
   (setq dashboard-center-content t)
   ;;(setq dashboard-show-shortcuts nil)
