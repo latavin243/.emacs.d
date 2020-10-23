@@ -191,6 +191,7 @@
 (global-set-key (kbd "H-y") #'aya-expand)
 
 ;; evil mode
+(straight-use-package 'evil)
 (use-package evil
   :ensure t
   :init
@@ -204,6 +205,14 @@
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+  )
+
+;; undo and redo
+(straight-use-package 'undo-tree)
+(use-package undo-tree
+  :ensure t
+  :config
+  (turn-on-undo-tree-mode)
   (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
   )
 
@@ -264,15 +273,6 @@
   (auto-package-update-delete-old-versions t)
   )
 
-;; undo and redo
-(straight-use-package 'undo-tree)
-(use-package undo-tree
-  :ensure t
-  :config
-  (turn-on-undo-tree-mode)
-  )
-(define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
-
 ;; neotree, sidebar explorer
 (use-package neotree
   :ensure t
@@ -294,6 +294,11 @@
 	          (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
 	          )
 	        )
+  (add-hook 'find-file-hook
+    (lambda ()
+        (let ((buffer (current-buffer)))
+            (neotree-find (projectile-project-root))
+            (set-buffer buffer))))
   )
 
 ;; jump window like tmux prefix-q
@@ -392,9 +397,9 @@
   (setq dashboard-center-content t)
   ;;(setq dashboard-show-shortcuts nil)
   (setq dashboard-items '(
-                          (recents  . 10)
+                          (recents  . 20)
                           (bookmarks . 5)
-                          (projects . 5)
+                          (projects . 10)
                           ;;(agenda . 5)
                           ;;(registers . 5)
                           ))
@@ -411,9 +416,9 @@
   :ensure t
   :init
   (setq
+   evil-emacs-state-cursor 'bar
    evil-insert-state-cursor 'bar
    evil-normal-state-cursor 'box
-   evil-emacs-state-cursor 'bar
    )
   :config
   (evil-terminal-cursor-changer-activate)

@@ -1,4 +1,3 @@
-
 (add-to-list 'load-path "~/.emacs.d/config/")
 
 ;; === straight-use-package
@@ -15,19 +14,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; open config file command
-(defun open-init-file()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-
-;; indent buffer
-(defun indent-buffer ()
-  "Auto init current buffer."
-  (interactive)
-  (save-excursion
-    ((indent-region (point-min) (point-max))
-     (message "buffer indented"))))
-
 ;; === load config files
 (require 'init-packages)
 (require 'init-ui)
@@ -36,5 +22,3 @@
 (require 'init-keybindings)
 
 ;;; init.el ends here
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-region 'disabled nil)

@@ -6,6 +6,7 @@
 
 ;; show line number
 (global-linum-mode t)
+(setq linum-format "%d ")
 
 ;; auto load outer change
 (global-auto-revert-mode t)
@@ -102,10 +103,27 @@
 ;; encoding to utf-8
 (set-language-environment "UTF-8")
 
+;; open config file command
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+;; indent buffer
+(defun indent-buffer ()
+  "Auto init current buffer."
+  (interactive)
+  (save-excursion
+    ((indent-region (point-min) (point-max))
+     (message "buffer indented"))))
+
 ;; 4 spaces to replace table
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+
+;; narrow region setup
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;; file fin
 (provide 'init-better-defaults)
