@@ -6,7 +6,7 @@
 
 ;; show line number
 (global-linum-mode t)
-(setq linum-format "%d ")
+(custom-set-variables '(linum-format (quote "%d ")))
 
 ;; auto load outer change
 (global-auto-revert-mode t)
