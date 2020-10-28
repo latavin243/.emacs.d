@@ -6,6 +6,7 @@
 ;; use-package
 (straight-use-package 'use-package)
 (defvar use-package-always-ensure t)
+(custom-set-variables '(package-selected-packages (quote (use-package))))
 
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
@@ -411,6 +412,11 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
+  )
+
+(use-package go-tag
+  :ensure t
+  :after go-tag go-mode
   )
 
 ;; json
