@@ -185,7 +185,7 @@
     "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
     ;; "cc" 'evilnc-copy-and-comment-lines
     "cp" 'evilnc-comment-or-uncomment-paragraphs
-    "cr" 'comment-or-uncomment-region
+    ;; "cr" 'comment-or-uncomment-region
     "cv" 'evilnc-toggle-invert-comment-line-by-line
     "."  'evilnc-copy-and-comment-operator
     "\\" 'evilnc-comment-operator
@@ -468,6 +468,35 @@
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  )
+
+;; like vim-abolish, convert from camelCase to snake_case
+(use-package string-inflection
+  :ensure t
+  :after (evil)
+  :config
+  (evil-leader/set-key
+    "rs" 'string-inflection-underscore
+    "rc" 'string-inflection-lower-camelcase
+    "rp" 'string-inflection-camelcase
+    "rk" 'string-inflection-kebab-case
+    )
+  )
+
+;; highlight TODO
+(use-package hl-todo
+  :ensure t
+  :defer t
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  (defvar hl-todo-keyword-faces
+    `(("TODO"       warning bold)
+      ("FIXME"      error bold)
+      ("HACK"       font-lock-constant-face bold)
+      ("REVIEW"     font-lock-keyword-face bold)
+      ("NOTE"       success bold)
+      ("DEPRECATED" font-lock-doc-face bold))
+    )
   )
 
 (provide 'init-packages)
