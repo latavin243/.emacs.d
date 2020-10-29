@@ -13,8 +13,8 @@
 
 ;; important packages
 (straight-use-package 'counsel)
-(straight-use-package 'yasnippet)
-(straight-use-package 'auto-yasnippet)
+;; (straight-use-package 'yasnippet)
+;; (straight-use-package 'auto-yasnippet)
 ;; theme
 (straight-use-package 'srcery-theme)
 ;; vim related
@@ -22,11 +22,7 @@
 (straight-use-package 'powerline-evil)
 (straight-use-package 'evil-nerd-commenter)
 ;; others
-(straight-use-package 'js2-mode)
-(straight-use-package 'nodejs-repl)
 (straight-use-package 'exec-path-from-shell)
-(straight-use-package 'js2-refactor)
-(straight-use-package 'web-mode)
 (straight-use-package 'reveal-in-osx-finder)
 (straight-use-package 'org-pomodoro)
 
@@ -38,11 +34,7 @@
 ;; exec path from shell
 ;; Find Executable Path on OS X
 (when (memq window-system '(mac ns)) (exec-path-from-shell-initialize))
-(setq exec-path-from-shell-check-startup-files nil)
-
-;; hungry delete package config
-;; (require 'hungry-delete)
-;; (global-hungry-delete-mode)
+(defvar exec-path-from-shell-check-startup-files nil)
 
 ;; swiper config
 (straight-use-package 'swiper)
@@ -75,46 +67,6 @@
 
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
-;; js files config
-(setq auto-mode-alist
-      (append
-       '(
-	     ("\\.js\\'" . js2-mode)
-	     ("\\.html\\'" . web-mode)
-	     )
-       auto-mode-alist))
-
-;; web-mode
-(defun my-web-mode-indent-setup ()
-  (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset 2)    ; web-mode, css in html file
-  (setq web-mode-code-indent-offset 2)   ; web-mode, js code in html file
-  )
-(add-hook 'web-mode-hook 'my-web-mode-indent-setup)
-
-(defun my-toggle-web-indent ()
-  (interactive)
-  ;; web development
-  (if (or (eq major-mode 'js-mode) (eq major-mode 'js2-mode))
-      (progn
-	    (setq js-indent-level (if (= js-indent-level 2) 4 2))
-	    (setq js2-basic-offset (if (= js2-basic-offset 2) 4 2))))
-
-  (if (eq major-mode 'web-mode)
-      (progn (setq web-mode-markup-indent-offset (if (= web-mode-markup-indent-offset 2) 4 2))
-	         (setq web-mode-css-indent-offset (if (= web-mode-css-indent-offset 2) 4 2))
-	         (setq web-mode-code-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
-  (if (eq major-mode 'css-mode)
-      (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
-
-  (setq indent-tabs-mode nil))
-
-(global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
-
-;; js2-refactor
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-m")
-
 ;; company mode
 (use-package company
   :ensure t
@@ -142,25 +94,6 @@
   )
 
 ;; counsel-imenu
-(defun js2-imenu-make-index ()
-  (interactive)
-  (save-excursion
-    ;; (setq imenu-generic-expression '((nil "describe\\(\"\\(.+\\)\"" 1)))
-    (imenu--generic-function '(("describe" "\\s-*describe\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			                   ("it" "\\s-*it\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			                   ("test" "\\s-*test\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			                   ("before" "\\s-*before\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			                   ("after" "\\s-*after\\s-*(\\s-*[\"']\\(.+\\)[\"']\\s-*,.*" 1)
-			                   ("Function" "function[ \t]+\\([a-zA-Z0-9_$.]+\\)[ \t]*(" 1)
-			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
-			                   ("Function" "^var[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*=[ \t]*function[ \t]*(" 1)
-			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*()[ \t]*{" 1)
-			                   ("Function" "^[ \t]*\\([a-zA-Z0-9_$.]+\\)[ \t]*:[ \t]*function[ \t]*(" 1)
-			                   ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)))))
-(add-hook 'js2-mode-hook
-	      (lambda ()
-	        (setq imenu-create-index-function 'js2-imenu-make-index)))
-
 (global-set-key (kbd "M-s i") 'counsel-imenu)
 
 ;; expand region config
@@ -182,13 +115,13 @@
   (global-flycheck-mode t)
   )
 
-;; yasnippet config
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
-
-;; auto yasnippet
-(global-set-key (kbd "H-w") #'aya-create)
-(global-set-key (kbd "H-y") #'aya-expand)
+;; ;; yasnippet config
+;; (yas-reload-all)
+;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+;; 
+;; ;; auto yasnippet
+;; (global-set-key (kbd "H-w") #'aya-create)
+;; (global-set-key (kbd "H-y") #'aya-expand)
 
 ;; evil mode
 (straight-use-package 'evil)
@@ -224,6 +157,7 @@
   (global-evil-surround-mode 1))
 
 ;; commenter
+(straight-use-package 'evil-leader)
 (use-package evil-leader
   :ensure t
   :after (evil)
@@ -232,7 +166,6 @@
   (evil-leader/set-leader ",")
   (evil-leader/set-key
     "sf" 'counsel-rg
-    ;; "ff" 'find-file
     "ff" 'counsel-git
     "bb" 'switch-to-buffer
     "w/" 'split-window-right
@@ -244,6 +177,7 @@
 ;; evil nerd commenter
 (use-package evil-nerd-commenter
   :ensure t
+  :after (evil)
   :config
   (evil-leader/set-key
     "cc" 'evilnc-comment-or-uncomment-lines
@@ -299,6 +233,7 @@
 ;; treemacs, sidebar explorer
 (use-package treemacs
   :ensure t
+  :after (evil-leader)
   :defer t
   :config
   (evil-leader/set-key
@@ -369,21 +304,26 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-evil
+  :ensure t
   :after treemacs evil
-  :ensure t)
+  )
 
 (use-package treemacs-projectile
+  :ensure t
   :after treemacs projectile
-  :ensure t)
+  )
 
 (use-package treemacs-icons-dired
-  :after treemacs dired
   :ensure t
-  :config (treemacs-icons-dired-mode))
+  :after treemacs dired
+  :config
+  (treemacs-icons-dired-mode)
+  )
 
 (use-package treemacs-magit
+  :ensure t
   :after treemacs magit
-  :ensure t)
+  )
 
 ;; jump window like tmux prefix-q
 (use-package switch-window
@@ -515,6 +455,7 @@
 
 (use-package ace-jump-mode
   :ensure t
+  :after (evil)
   :config
   (evil-leader/set-key
     "ss" 'ace-jump-mode
