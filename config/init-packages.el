@@ -8,13 +8,16 @@
 (defvar use-package-always-ensure t)
 (custom-set-variables '(package-selected-packages (quote (use-package))))
 
+(straight-use-package 'use-package-ensure-system-package)
+(use-package use-package-ensure-system-package
+  :ensure t
+  )
+
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 ;; important packages
 (straight-use-package 'counsel)
-;; (straight-use-package 'yasnippet)
-;; (straight-use-package 'auto-yasnippet)
 ;; theme
 (straight-use-package 'srcery-theme)
 ;; vim related
@@ -115,13 +118,24 @@
   (global-flycheck-mode t)
   )
 
-;; ;; yasnippet config
-;; (yas-reload-all)
-;; (add-hook 'prog-mode-hook #'yas-minor-mode)
-;; 
-;; ;; auto yasnippet
-;; (global-set-key (kbd "H-w") #'aya-create)
-;; (global-set-key (kbd "H-y") #'aya-expand)
+;; yasnippet config
+(straight-use-package 'yasnippet)
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  )
+
+;; auto-yasnippet
+(use-package auto-yasnippet
+  :ensure t
+  :after (yasnippet)
+  :defer t
+  :config
+  (global-set-key (kbd "H-w") #'aya-create)
+  (global-set-key (kbd "H-y") #'aya-expand)
+  )
 
 ;; evil mode
 (straight-use-package 'evil)
@@ -340,18 +354,40 @@
   :ensure t
   )
 
-;; golang
+;; ===
+;; === golang
+;; ===
 (use-package go-mode
   :ensure t
-  :mode "\\.go\\'"
+  :mode ("\\.go\\'" . go-mode)
+  :ensure-system-package
+  ((goimports . "go get -u golang.org/x/tools/cmd/goimports")
+    (godef . "go get -u github.com/rogpeppe/godef"))
   :init
-  (setq gofmt-command "goimports")
+  (setq gofmt-command "goimports"
+        intent-tab-mode t
+        tab-width 4)
   :config
-  (add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq tab-width 4)
-            (setq indent-tabs-mode 1)))
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; :bind (:map go-mode-map
+  ;;             ("\C-c \C-c" . compile)
+  ;;             ("\C-c \C-g" . go-goto-imports)
+  ;;             ("\C-c \C-k" . godoc)
+  ;;             ("M-j" . godef-jump)))
+  )
+
+(use-package gotest
+  :ensure t
+  :after go-mode
+  :defer t
+  :bind (:map go-mode-map
+              ("C-c C-f" . go-test-current-file)
+              ("C-c C-t" . go-test-current-test)
+              ("C-c C-p" . go-test-current-project)
+              ("C-c C-b" . go-test-current-benchmark)
+              ("C-x x" . go-run))
+  :config
+  (setq go-test-verbose t)
   )
 
 (use-package go-tag
