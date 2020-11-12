@@ -1,20 +1,7 @@
 ;;; init-package.el -- package management
 ;;; Commentary:
-;; latavin's Emacs package config
+;;; package config
 ;;; Code:
-
-;; use-package
-(straight-use-package 'use-package)
-(defvar use-package-always-ensure t)
-(custom-set-variables '(package-selected-packages (quote (use-package))))
-
-(straight-use-package 'use-package-ensure-system-package)
-(use-package use-package-ensure-system-package
-  :ensure t
-  )
-
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			             ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 ;; important packages
 (straight-use-package 'counsel)
@@ -425,7 +412,8 @@
   :ensure t
   :init (setq
          nyan-animate-nyancat t
-  	     nyan-bar-length 10
+  	     nyan-bar-length 20
+         nyan-wavy-trail t
          )
   :hook ((after-init . nyan-mode)))
 

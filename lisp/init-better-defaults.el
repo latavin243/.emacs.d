@@ -1,5 +1,15 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; disable ring bell
 (setq ring-bell-function 'ignore)
+
+;; disable other useless functions
+(unless (eq window-system 'ns) (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
 ;; cursor type
 (setq cursor-type 'bar)
@@ -26,7 +36,7 @@
 
 ;; recent file
 (recentf-mode 1)
-(setq recentf-max-menu-items 25)
+(defvar recentf-max-menu-items 25)
 
 ;; highlight matching brackets
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
@@ -38,23 +48,23 @@
 (delete-selection-mode t)
 
 ;; better hippie complete
-(setq hippie-expand-try-function-list '(try-expand-debbrev
-					try-expand-debbrev-all-buffers
-					try-expand-debbrev-from-kill
-					try-complete-file-name-partially
-					try-complete-file-name
-					try-expand-all-abbrevs
-					try-expand-list
-					try-expand-line
-					try-complete-lisp-symbol-partially
-					try-complete-lisp-symbol))
+(defvar hippie-expand-try-function-list '(try-expand-debbrev
+					                      try-expand-debbrev-all-buffers
+					                      try-expand-debbrev-from-kill
+					                      try-complete-file-name-partially
+					                      try-complete-file-name
+					                      try-expand-all-abbrevs
+					                      try-expand-list
+					                      try-expand-line
+					                      try-complete-lisp-symbol-partially
+					                      try-complete-lisp-symbol))
 
 ;; use y-n instead of yes-no
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; dired mode recursively delete and copy
-(setq dired-recursive-copies 'always)
-(setq dired-recursive-deletes 'always)
+(defvar dired-recursive-copies 'always)
+(defvar dired-recursive-deletes 'always)
 
 ;; dired mode config
 (put 'dired-find-alternate-file 'disabled nil)
@@ -67,9 +77,9 @@
 (define-advice show-paren-function (:around (fn) fix-show-paren-function)
   "Highlight enclosing parens."
   (cond ((looking-at-p "\\s(") (funcall fn))
-	(t (save-excursion
-	     (ignore-errors (backward-up-list))
-	     (funcall fn)))))
+	    (t (save-excursion
+	         (ignore-errors (backward-up-list))
+	         (funcall fn)))))
 
 ;; handle dos eol (^M)
 (defun hide-dos-eol ()
@@ -80,7 +90,7 @@
   (aset buffer-display-table ?\^M []))
 
 (defun remove-dos-eol ()
-  "Replace DOS eolns CR LF with Unix eolns CR"
+  "Replace DOS eolns CR LF with Unix eolns CR."
   (interactive)
   (goto-char (point-min))
   (while (search-forward "\r" nil t) (replace-match "")))
@@ -90,13 +100,13 @@
   "Call `occur' with a sane default."
   (interactive)
   (push (if (region-active-p)
-	    (buffer-substring-no-properties
-	     (region-beginning)
-	     (region-end))
-	  (let ((sym (thing-at-point 'symbol)))
-	    (when (stringp sym)
-	      (regexp-quote sym))))
-	regexp-history)
+	        (buffer-substring-no-properties
+	         (region-beginning)
+	         (region-end))
+	      (let ((sym (thing-at-point 'symbol)))
+	        (when (stringp sym)
+	          (regexp-quote sym))))
+	    regexp-history)
   (call-interactively 'occur))
 (global-set-key (kbd "M-s o") 'occur-dwim)
 
@@ -105,16 +115,9 @@
 
 ;; open config file command
 (defun open-init-file()
+  "Opens init.el config."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
-
-;; indent buffer
-(defun indent-buffer ()
-  "Auto init current buffer."
-  (interactive)
-  (save-excursion
-    ((indent-region (point-min) (point-max))
-     (message "buffer indented"))))
 
 ;; 4 spaces to replace table
 (setq-default indent-tabs-mode nil)
@@ -127,3 +130,4 @@
 
 ;; file fin
 (provide 'init-better-defaults)
+;;; init-better-defaults.el ends here
