@@ -11,12 +11,13 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
+;; line number
+(global-linum-mode t)
+(setq linum-format "%d ")
+(set-face-background 'linum nil)
+
 ;; cursor type
 (setq cursor-type 'bar)
-
-;; show line number
-(global-linum-mode t)
-(custom-set-variables '(linum-format (quote "%d ")))
 
 ;; auto load outer change
 (global-auto-revert-mode t)

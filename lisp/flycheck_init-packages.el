@@ -517,5 +517,9 @@
     )
   )
 
+;; terminal
+(require 'multi-term)
+(setq multi-term-program "/bin/zsh")
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
