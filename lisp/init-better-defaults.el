@@ -17,7 +17,7 @@
 (set-face-background 'linum nil)
 
 ;; cursor type
-(setq cursor-type 'bar)
+;; (setq cursor-type 'bar)
 
 ;; auto load outer change
 (global-auto-revert-mode t)

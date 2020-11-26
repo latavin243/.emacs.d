@@ -136,9 +136,9 @@
   :ensure t
   :init
   (setq
-   evil-insert-state-cursor 'bar
+   ;; evil-insert-state-cursor 'bar
    evil-normal-state-cursor 'box
-   evil-emacs-state-cursor 'bar
+   ;; evil-emacs-state-cursor 'bar
    )
   :config
   (evil-mode 1)
@@ -322,6 +322,7 @@
   ;; (setq switch-window-shortcut-appearance 'asciiart)
   (evil-leader/set-key
     "qq" 'switch-window
+    "ww" 'switch-window
     ))
 
 
@@ -459,17 +460,17 @@
   :ensure t
   )
 
-(use-package evil-terminal-cursor-changer
-  :ensure t
-  :init
-  (setq
-   evil-emacs-state-cursor 'bar
-   evil-insert-state-cursor 'bar
-   evil-normal-state-cursor 'box
-   )
-  :config
-  (evil-terminal-cursor-changer-activate)
-  )
+;; (use-package evil-terminal-cursor-changer
+;;   :ensure t
+;;   :init
+;;   (setq
+;;    evil-emacs-state-cursor 'bar
+;;    evil-insert-state-cursor 'bar
+;;    evil-normal-state-cursor 'box
+;;    )
+;;   :config
+;;   (evil-terminal-cursor-changer-activate)
+;;   )
 
 (use-package ace-jump-mode
   :ensure t
