@@ -138,4 +138,8 @@
 
 ;; file fin
 (provide 'init-better-defaults)
+
+;; better gc
+(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
+
 ;;; init-better-defaults.el ends here

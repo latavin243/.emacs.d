@@ -316,13 +316,24 @@
   )
 
 ;; jump window like tmux prefix-q
-(use-package switch-window
+
+;; (use-package switch-window
+;;   :ensure t
+;;   :config
+;;   ;; (setq switch-window-shortcut-appearance 'asciiart)
+;;   (evil-leader/set-key
+;;     "qq" 'switch-window
+;;     "ww" 'switch-window
+;;     ))
+
+(use-package ace-window
   :ensure t
+  :after (evil-leader)
   :config
-  ;; (setq switch-window-shortcut-appearance 'asciiart)
+  (global-set-key (kbd "M-o") 'ace-window)
   (evil-leader/set-key
-    "qq" 'switch-window
-    "ww" 'switch-window
+    "qq" 'ace-window
+    "ww" 'ace-window
     ))
 
 
@@ -422,6 +433,11 @@
   :ensure t
   )
 
+;; (use-package evil-magit
+;;   :ensure t
+;;   :after (evil magit)
+;;   )
+
 ;; git gutter
 (use-package git-gutter+
   :ensure t
@@ -436,7 +452,6 @@
   )
 
 ;; startup dashboard
-(straight-use-package 'dashboard)
 (use-package dashboard
   :ensure t
   :init
@@ -517,6 +532,17 @@
       ("DEPRECATED" font-lock-doc-face bold))
     )
   )
+
+;; (use-package flyspell
+;;   :ensure t
+;;   )
+
+;; (use-package wucuo
+;;   :ensure t
+;;   :config
+;;   (add-hook 'prog-mode-hook #'wucuo-start)
+;;   (add-hook 'text-mode-hook #'wucuo-start)
+;;   )
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
