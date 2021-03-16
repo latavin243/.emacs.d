@@ -133,8 +133,8 @@
 (setq scroll-step 1 scroll-margin 3 scroll-conservatively 10000)
 
 ;; confirm kill
-(setq confirm-kill-emacs
-      (lambda (prompt) (y-or-n-p-with-timeout "Whether to quit Emacs:" 10 "y")))
+;; (setq confirm-kill-emacs
+;;       (lambda (prompt) (y-or-n-p-with-timeout "Whether to quit Emacs:" 10 "y")))
 
 ;; file fin
 (provide 'init-better-defaults)
