@@ -7,9 +7,12 @@
 ;; === load config files
 (require 'init-elpa)
 (require 'init-better-defaults)
-(require 'init-packages)
 (require 'init-ui)
-(require 'init-org)
 (require 'init-keybindings)
+(require 'init-evil)
+(require 'init-org)
+
+;; to be split
+(require 'init-packages)
 
 ;;; init.el ends here
