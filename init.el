@@ -9,10 +9,10 @@
 (require 'init-elpa)
 
 (require 'init-better-defaults)
-;; (require 'init-ui)
+(require 'init-ui)
 ;; (require 'init-keybindings)
-
 (require 'init-benchmark)
+
 (require 'init-evil)
 ;; (require 'init-org)
 
