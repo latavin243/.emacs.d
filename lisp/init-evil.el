@@ -6,7 +6,7 @@
   :init
   (setq
    ;; evil-insert-state-cursor 'bar
-   evil-normal-state-cursor 'box
+   ;; evil-normal-state-cursor 'box
    ;; evil-emacs-state-cursor 'bar
    )
   :config
@@ -17,7 +17,6 @@
   )
 
 ;; leader
-(straight-use-package 'evil-leader)
 (use-package evil-leader
   :ensure t
   :after (evil counsel)
