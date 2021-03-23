@@ -14,6 +14,7 @@
 (require 'init-benchmark)
 
 (require 'init-evil)
+(require 'init-lsp)
 ;; (require 'init-org)
 
 ;; to be split

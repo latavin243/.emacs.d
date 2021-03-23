@@ -335,12 +335,6 @@
   :ensure t
   )
 
-;; lsp
-(use-package lsp-mode
-  :ensure t
-  :commands (lsp lsp-deferred)
-  )
-
 ;; (use-package company-lsp
 ;;   :ensure t
 ;;   :defer t
