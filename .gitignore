@@ -7,3 +7,9 @@ config/flycheck_init-packages.el
 .cache/
 .lsp-session-v1
 projectile-bookmarks.eld
+
+custom.el
+bookmarks
+abbrev_defs
+
+.DS_Store
