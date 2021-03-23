@@ -2,10 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+;; disable startup page
+(setq inhibit-startup-screen t)
+
 ;; disable ring bell
 (setq ring-bell-function 'ignore)
 
-;; disable other useless functions
+;; disable other useless menus
 (unless (eq window-system 'ns) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -22,12 +25,12 @@
 ;; auto load outer change
 (global-auto-revert-mode t)
 
-;; abbreviation
-(setq-default abbrev-mode t)
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("abbr" "abbreviation")
-    ))
+;; ;; abbreviation
+;; (setq-default abbrev-mode t)
+;; (define-abbrev-table 'global-abbrev-table
+;;   '(
+;;     ("abbr" "abbreviation")
+;;     ))
 
 ;; no backup files
 (setq make-backup-files nil)
@@ -136,10 +139,8 @@
 ;; (setq confirm-kill-emacs
 ;;       (lambda (prompt) (y-or-n-p-with-timeout "Whether to quit Emacs:" 10 "y")))
 
-;; file fin
-(provide 'init-better-defaults)
-
 ;; better gc
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
 
+(provide 'init-better-defaults)
 ;;; init-better-defaults.el ends here

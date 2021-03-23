@@ -7,7 +7,7 @@
 ;; === load config files
 (require 'init-elpa)
 
-;; (require 'init-better-defaults)
+(require 'init-better-defaults)
 ;; (require 'init-ui)
 ;; (require 'init-keybindings)
 ;; (require 'init-evil)
