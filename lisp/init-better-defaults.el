@@ -116,6 +116,11 @@
 
 ;; encoding to utf-8
 (set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
 
 ;; open config file command
 (defun open-init-file()
@@ -141,6 +146,16 @@
 
 ;; better gc
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
+
+;; OS
+(defconst *is-mac* (eq system-type 'darwin))
+(defconst *is-linux* (eq system-type 'gnu/linux))
+(defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
+
+;; macOS mapping commands to meta
+(when *is-mac*
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier 'none))
 
 (provide 'init-better-defaults)
 ;;; init-better-defaults.el ends here
