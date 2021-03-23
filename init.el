@@ -15,6 +15,9 @@
 
 (require 'init-evil)
 (require 'init-lsp)
+
+;; language
+(require 'init-golang)
 ;; (require 'init-org)
 
 ;; to be split
