@@ -18,7 +18,7 @@
 
 ;; language
 (require 'init-golang)
-;; (require 'init-org)
+(require 'init-org)
 
 ;; to be split
 ;; (require 'init-packages)

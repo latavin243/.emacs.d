@@ -12,7 +12,6 @@
 ;; others
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'reveal-in-osx-finder)
-(straight-use-package 'org-pomodoro)
 
 ;; cl - Common Lisp Extension
 (require 'cl)
