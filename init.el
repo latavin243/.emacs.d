@@ -16,6 +16,9 @@
 (require 'init-evil)
 (require 'init-lsp)
 
+;; swiper
+(require 'init-swiper)
+
 ;; language
 (require 'init-golang)
 (require 'init-org)

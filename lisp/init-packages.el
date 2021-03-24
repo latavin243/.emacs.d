@@ -27,32 +27,6 @@
 (when (memq window-system '(mac ns)) (exec-path-from-shell-initialize))
 (defvar exec-path-from-shell-check-startup-files nil)
 
-;; swiper config
-(straight-use-package 'counsel)
-(use-package counsel
-  :ensure t
-  )
-
-(straight-use-package 'ivy)
-(use-package ivy
-  :ensure t
-  :bind (
-         "C-c C-r" . 'ivy-resume
-         )
-  :init
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  )
-(straight-use-package 'ivy-xref)
-(straight-use-package 'ivy-hydra)
-
-(straight-use-package 'swiper)
-(use-package swiper
-  :ensure t
-  :after (counsel ivy)
-  )
-
 
 ;; smartparens config
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
