@@ -4,11 +4,8 @@
 ;;; Code:
 
 ;; important packages
-;; theme
-(straight-use-package 'srcery-theme)
 ;; vim related
 (straight-use-package 'window-numbering)
-(straight-use-package 'powerline-evil)
 ;; others
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'reveal-in-osx-finder)
@@ -17,10 +14,6 @@
 (require 'cl)
 (require 'loadhist)
 (file-dependents (feature-file 'cl))
-
-;; ensure use-package
-(when (not (package-installed-p 'use-package))
-  (package-install 'use-package))
 
 ;; exec path from shell
 ;; Find Executable Path on OS X
@@ -54,9 +47,6 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   )
-
-;; theme
-(load-theme 'srcery t)
 
 ;; popwin config
 (use-package popwin
