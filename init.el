@@ -23,6 +23,9 @@
 (require 'init-golang)
 (require 'init-org)
 
+;; theme
+(require 'init-theme)
+
 ;; to be split
 ;; (require 'init-packages)
 
