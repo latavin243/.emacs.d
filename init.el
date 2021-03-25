@@ -17,9 +17,10 @@
 (require 'init-evil)
 (require 'init-lsp)
 (require 'init-swiper)
-(require 'init-git)
 
 ;; tools
+(require 'init-git) ;; git
+(require 'init-snippet) ;; snippet
 (require 'init-window) ;; window
 (require 'init-treemacs) ;; file-explorer
 (require 'init-code-jump) ;; code jump

@@ -57,25 +57,6 @@
   (global-flycheck-mode t)
   )
 
-;; yasnippet config
-(straight-use-package 'yasnippet)
-(use-package yasnippet
-  :ensure t
-  :config
-  (yas-reload-all)
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
-  )
-
-;; auto-yasnippet
-(use-package auto-yasnippet
-  :ensure t
-  :after (yasnippet)
-  :defer t
-  :config
-  (global-set-key (kbd "H-w") #'aya-create)
-  (global-set-key (kbd "H-y") #'aya-expand)
-  )
-
 ;; auto package update
 (use-package auto-package-update
   :ensure t
