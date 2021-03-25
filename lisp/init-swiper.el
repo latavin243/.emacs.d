@@ -1,6 +1,9 @@
 ;; swiper config
 (use-package counsel)
 
+;; ;; counsel-imenu
+;; (global-set-key (kbd "M-s i") 'counsel-imenu)
+
 (use-package ivy
   :bind (
     ("C-c C-r" . 'ivy-resume)

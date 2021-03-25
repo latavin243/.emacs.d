@@ -26,6 +26,9 @@
 ;; window
 (require 'init-window)
 
+;; file-explorer
+(require 'init-treemacs)
+
 ;; theme
 (require 'init-theme)
 
