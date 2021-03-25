@@ -12,4 +12,10 @@
     "ww" 'ace-window
     ))
 
+;; popwin, new window from bottom, like quickfix in vim
+(use-package popwin
+  :config
+  (popwin-mode t)
+  )
+
 (provide 'init-window)

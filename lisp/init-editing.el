@@ -24,5 +24,10 @@
   (global-set-key (kbd "C-=") 'er/expand-region)
   )
 
+;; iedit, multi editing
+(use-package iedit
+  ;; default key binding: C-;
+  )
+
 ;; end of package
 (provide 'init-editing)

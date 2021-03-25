@@ -38,18 +38,6 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   )
 
-;; popwin config
-(use-package popwin
-  :ensure t
-  :config
-  (popwin-mode t)
-  )
-
-;; iedit
-(straight-use-package 'iedit)
-;; (global-set-key (kbd "M-s e") 'iedit-mode)
-;; c-; will do
-
 ;; flycheck
 (use-package flycheck
   :ensure t
