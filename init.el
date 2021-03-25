@@ -15,7 +15,7 @@
 
 ;; core packages
 (require 'init-evil)
-(require 'init-lsp)
+(require 'init-completion)
 (require 'init-swiper)
 
 ;; tools
