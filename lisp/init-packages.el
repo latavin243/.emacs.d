@@ -155,12 +155,6 @@
   (progn (global-git-gutter+-mode))
   )
 
-;; doom modeline
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode)
-  )
-
 (use-package auto-highlight-symbol
   :ensure t
   )
