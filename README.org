@@ -59,7 +59,7 @@ Below are some core functions needed.
 1. like tmux <prefix>q
 2. use window-numbering, etc
 
-** easymotion
+** code-jump, easymotion
 1. like vim-easymotion
 
 ** floatwindow

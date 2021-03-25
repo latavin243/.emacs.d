@@ -13,21 +13,19 @@
 ;; (require 'init-keybindings)
 (require 'init-benchmark)
 
+;; core packages
 (require 'init-evil)
 (require 'init-lsp)
-
-;; swiper
 (require 'init-swiper)
+
+;; tools
+(require 'init-window) ;; window
+(require 'init-treemacs) ;; file-explorer
+(require 'init-code-jump) ;; code jump
 
 ;; language or filetype
 (require 'init-lang-go)
 (require 'init-org)
-
-;; window
-(require 'init-window)
-
-;; file-explorer
-(require 'init-treemacs)
 
 ;; theme
 (require 'init-theme)
