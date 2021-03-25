@@ -152,10 +152,10 @@
 (defconst *is-linux* (eq system-type 'gnu/linux))
 (defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
 
-;; macOS mapping commands to meta
-(when *is-mac*
-    (setq mac-command-modifier 'meta)
-    (setq mac-option-modifier 'none))
+;; ;; macOS mapping commands to meta
+;; (when *is-mac*
+;;     (setq mac-command-modifier 'meta)
+;;     (setq mac-option-modifier 'none))
 
 (provide 'init-better-defaults)
 ;;; init-better-defaults.el ends here

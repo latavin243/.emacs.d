@@ -4,8 +4,7 @@
 ;;; Code:
 
 ;; important packages
-;; vim related
-(straight-use-package 'window-numbering)
+
 ;; others
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'reveal-in-osx-finder)
@@ -219,28 +218,6 @@
   :ensure t
   :after (treemacs magit)
   )
-
-;; jump window like tmux prefix-q
-
-;; (use-package switch-window
-;;   :ensure t
-;;   :config
-;;   ;; (setq switch-window-shortcut-appearance 'asciiart)
-;;   (evil-leader/set-key
-;;     "qq" 'switch-window
-;;     "ww" 'switch-window
-;;     ))
-
-(use-package ace-window
-  :ensure t
-  :after (evil-leader)
-  :config
-  (global-set-key (kbd "M-o") 'ace-window)
-  (evil-leader/set-key
-    "qq" 'ace-window
-    "ww" 'ace-window
-    ))
-
 
 ;; json
 (use-package json-mode

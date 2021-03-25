@@ -23,6 +23,9 @@
 (require 'init-golang)
 (require 'init-org)
 
+;; window
+(require 'init-window)
+
 ;; theme
 (require 'init-theme)
 

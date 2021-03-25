@@ -1,3 +1,5 @@
+#+STARTUP: showeverything
+
 * Emacs Configuration
 
 #+OPTIONS: toc:2
