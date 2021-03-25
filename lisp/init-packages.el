@@ -64,20 +64,6 @@
   (auto-package-update-delete-old-versions t)
   )
 
-;; json
-(use-package json-mode
-  :ensure t
-  )
-
-;; yaml
-(use-package yaml-mode
-  :ensure t
-  )
-
-;; pb
-(use-package protobuf-mode
-  :ensure t
-  )
 
 ;; (use-package company-lsp
 ;;   :ensure t

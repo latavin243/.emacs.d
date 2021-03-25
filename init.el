@@ -27,9 +27,14 @@
 (require 'init-dashboard) ;; startup dashboard
 (require 'init-mode-line) ;; mode line
 
-;; language or filetype
+;; language
 (require 'init-lang-go)
 (require 'init-org)
+
+;; filetype
+(require 'init-filetype-json)
+(require 'init-filetype-yaml)
+(require 'init-filetype-protobuf)
 
 ;; theme
 (require 'init-theme)
