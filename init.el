@@ -17,6 +17,7 @@
 (require 'init-evil)
 (require 'init-completion)
 (require 'init-swiper)
+(require 'init-package-management)
 
 ;; tools
 (require 'init-git) ;; git

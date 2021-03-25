@@ -29,18 +29,6 @@
   (global-flycheck-mode t)
   )
 
-;; auto package update
-(use-package auto-package-update
-  :ensure t
-  :custom
-  (auto-package-update-delete-old-versions t)
-  )
-
-
-;; (use-package company-lsp
-;;   :ensure t
-;;   :defer t
-;;   :init (setq company-lsp-cache-candidates 'auto))
 
 (straight-use-package 'projectile)
 (use-package projectile

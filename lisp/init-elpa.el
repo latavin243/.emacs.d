@@ -37,8 +37,5 @@
     (setq use-package-expand-minimally t)
     (setq use-package-verbose t))
 
-;; install use-package-ensure-system-package
-(use-package use-package-ensure-system-package)
-
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
