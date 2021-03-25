@@ -33,4 +33,4 @@
   :after (go-mode)
   )
 
-(provide 'init-golang)
+(provide 'init-lang-go)

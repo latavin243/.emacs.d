@@ -19,8 +19,8 @@
 ;; swiper
 (require 'init-swiper)
 
-;; language
-(require 'init-golang)
+;; language or filetype
+(require 'init-lang-go)
 (require 'init-org)
 
 ;; window
