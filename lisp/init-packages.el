@@ -20,15 +20,6 @@
 (defvar exec-path-from-shell-check-startup-files nil)
 
 
-;; smartparens config
-;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(straight-use-package 'smartparens)
-(use-package smartparens
-  :ensure t
-  :config
-  (smartparens-global-mode t)
-  )
-
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 ;; company mode
@@ -52,13 +43,6 @@
   :ensure t
   :config
   (popwin-mode t)
-  )
-
-;; expand region config
-(use-package expand-region
-  :ensure t
-  :config
-  (global-set-key (kbd "C-=") 'er/expand-region)
   )
 
 ;; iedit
@@ -92,23 +76,6 @@
   (global-set-key (kbd "H-y") #'aya-expand)
   )
 
-;; undo and redo
-(straight-use-package 'undo-tree)
-(use-package undo-tree
-  :ensure t
-  :config
-  (turn-on-undo-tree-mode)
-  ;; (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
-  )
-
-;; which key
-(straight-use-package 'which-key)
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode)
-  )
-
 ;; auto package update
 (use-package auto-package-update
   :ensure t
@@ -136,13 +103,6 @@
 ;;   :defer t
 ;;   :init (setq company-lsp-cache-candidates 'auto))
 
-;; jump to declearation
-(use-package dumb-jump
-  :ensure t
-  :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-  )
-
 ;; magit
 (use-package magit
   :ensure t
@@ -155,32 +115,12 @@
   (progn (global-git-gutter+-mode))
   )
 
-(use-package auto-highlight-symbol
-  :ensure t
-  )
-
 (straight-use-package 'projectile)
 (use-package projectile
   :ensure t
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  )
-
-;; highlight TODO
-(use-package hl-todo
-  :ensure t
-  :defer t
-  :hook (prog-mode . hl-todo-mode)
-  :config
-  (defvar hl-todo-keyword-faces
-    `(("TODO"       warning bold)
-      ("FIXME"      error bold)
-      ("HACK"       font-lock-constant-face bold)
-      ("REVIEW"     font-lock-keyword-face bold)
-      ("NOTE"       success bold)
-      ("DEPRECATED" font-lock-doc-face bold))
-    )
   )
 
 ;; (use-package flyspell
