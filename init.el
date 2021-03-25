@@ -17,6 +17,7 @@
 (require 'init-evil)
 (require 'init-lsp)
 (require 'init-swiper)
+(require 'init-git)
 
 ;; tools
 (require 'init-window) ;; window

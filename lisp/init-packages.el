@@ -103,18 +103,6 @@
 ;;   :defer t
 ;;   :init (setq company-lsp-cache-candidates 'auto))
 
-;; magit
-(use-package magit
-  :ensure t
-  )
-
-;; git gutter
-(use-package git-gutter+
-  :ensure t
-  :config
-  (progn (global-git-gutter+-mode))
-  )
-
 (straight-use-package 'projectile)
 (use-package projectile
   :ensure t
