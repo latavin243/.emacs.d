@@ -22,6 +22,7 @@
 (require 'init-window) ;; window
 (require 'init-treemacs) ;; file-explorer
 (require 'init-code-jump) ;; code jump
+(require 'init-dashboard) ;; startup dashboard
 
 ;; language or filetype
 (require 'init-lang-go)
