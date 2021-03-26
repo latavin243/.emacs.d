@@ -157,5 +157,9 @@
 ;;     (setq mac-command-modifier 'meta)
 ;;     (setq mac-option-modifier 'none))
 
+;; disable cl warning
+(setq byte-compile-warnings '(cl-functions))
+
+
 (provide 'init-better-defaults)
 ;;; init-better-defaults.el ends here
