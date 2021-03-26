@@ -27,6 +27,7 @@
 (require 'init-code-jump) ;; code jump
 (require 'init-dashboard) ;; startup dashboard
 (require 'init-mode-line) ;; mode line
+(require 'init-projectile) ;; project switch
 
 ;; language
 (require 'init-lang-go)
