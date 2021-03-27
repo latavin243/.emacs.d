@@ -16,4 +16,10 @@
 
 (use-package org-pomodoro)
 
+;; org-bullets
+(use-package org-bullets
+  :hook
+  (org-mode . (lambda () (org-bullets-mode 1)))
+  )
+
 (provide 'init-org)
