@@ -22,18 +22,6 @@
 
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
-;; flycheck
-(use-package flycheck
-  :ensure t
-  :config
-  (global-flycheck-mode t)
-  )
-
-
-;; (use-package flyspell
-;;   :ensure t
-;;   )
-
 ;; (use-package wucuo
 ;;   :ensure t
 ;;   :config

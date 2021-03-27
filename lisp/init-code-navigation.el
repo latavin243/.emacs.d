@@ -14,4 +14,11 @@
     )
   )
 
-(provide 'init-code-jump)
+;; subword, enable jump camelCase word
+(use-package subword
+  :diminish subword-mode
+  :init
+  (global-subword-mode)
+  )
+
+(provide 'init-code-navigation)

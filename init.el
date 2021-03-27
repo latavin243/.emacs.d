@@ -24,10 +24,14 @@
 (require 'init-snippet) ;; snippet
 (require 'init-window) ;; window
 (require 'init-treemacs) ;; file-explorer
-(require 'init-code-jump) ;; code jump
+(require 'init-code-navigation) ;; code navigation
 (require 'init-dashboard) ;; startup dashboard
 (require 'init-mode-line) ;; mode line
 (require 'init-projectile) ;; project switch
+
+;; check
+(require 'init-check-spell)
+(require 'init-check-syntax)
 
 ;; language
 (require 'init-lang-go)
