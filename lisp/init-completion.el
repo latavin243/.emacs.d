@@ -13,8 +13,13 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous)
   )
 
+;; company-box
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 ;; lsp
 (use-package lsp-mode
+  :hook (go-mode . lsp-deferred)
   :commands (lsp lsp-deferred)
   )
 
