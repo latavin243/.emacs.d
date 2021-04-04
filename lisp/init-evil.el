@@ -9,6 +9,7 @@
    ;; evil-normal-state-cursor 'box
    ;; evil-emacs-state-cursor 'bar
    )
+  (setq evil-want-C-i-jump nil) ;; avoid conflicts with org-mode
   :config
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
