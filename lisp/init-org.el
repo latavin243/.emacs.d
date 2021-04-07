@@ -28,6 +28,7 @@
   :init
   :hook (org-mode . (lambda () evil-org-mode))
   :config
+  (setq evil-want-C-i-jump nil) ;; avoid conflicts with evil tab
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
