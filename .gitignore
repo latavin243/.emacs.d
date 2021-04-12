@@ -15,3 +15,5 @@ abbrev_defs
 .DS_Store
 
 auto-save-list
+
+.last-package-update-day
