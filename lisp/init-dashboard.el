@@ -3,7 +3,7 @@
   :ensure t
   :init
   (setq dashboard-banner-logo-title "Happy Hacking")
-  (setq dashboard-startup-banner 'official)
+  (setq dashboard-startup-banner nil) ;; can be 'official, etc
   (setq dashboard-center-content t)
   ;;(setq dashboard-show-shortcuts nil)
   (setq dashboard-items '(

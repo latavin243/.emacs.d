@@ -24,11 +24,11 @@
 
 ;; evil-org-mode
 (use-package evil-org
-  :after (org)
-  :init
+  :after (org evil)
   :hook (org-mode . (lambda () evil-org-mode))
   :config
   (setq evil-want-C-i-jump nil) ;; avoid conflicts with evil tab
+  (evil-org-set-key-theme '(navigation insert textobjects additional))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
