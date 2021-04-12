@@ -9,7 +9,7 @@
   (setq dashboard-items '(
                           (recents  . 20)
                           (bookmarks . 5)
-                          (projects . 10)
+                          (projects . 20)
                           ;;(agenda . 5)
                           ;;(registers . 5)
                           ))

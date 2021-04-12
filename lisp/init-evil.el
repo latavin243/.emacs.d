@@ -20,14 +20,15 @@
 ;; leader
 (use-package evil-leader
   :ensure t
-  :after (evil counsel)
+  :after (evil counsel fzf)
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader ",")
   (evil-leader/set-key
     "sf" 'counsel-rg
     "rg" 'counsel-rg
-    "ff" 'counsel-git
+    ;; "ff" 'counsel-git
+    "ff" 'fzf
     "bb" 'switch-to-buffer
     "w/" 'split-window-right
     "w-" 'split-window-below

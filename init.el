@@ -18,6 +18,7 @@
 (require 'init-completion)
 (require 'init-swiper)
 (require 'init-package-management)
+(require 'init-fzf)
 
 ;; tools
 (require 'init-git) ;; git
