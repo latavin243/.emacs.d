@@ -13,6 +13,9 @@
 ;; (require 'init-keybindings)
 (require 'init-benchmark)
 
+;; basic packages
+(require 'init-emacs-control)
+
 ;; core packages
 (require 'init-evil)
 (require 'init-completion)

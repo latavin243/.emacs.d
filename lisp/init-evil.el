@@ -27,9 +27,11 @@
   (evil-leader/set-key
     "sf" 'counsel-rg
     "rg" 'counsel-rg
+    ;; "ff" 'fzf
     ;; "ff" 'counsel-git
-    "ff" 'fzf
-    "bb" 'switch-to-buffer
+    "ff" 'counsel-find-file
+    ;; "bb" 'switch-to-buffer
+    "bb" 'counsel-switch-buffer
     "w/" 'split-window-right
     "w-" 'split-window-below
     ":"  'counsel-M-x
