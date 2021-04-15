@@ -46,6 +46,9 @@
 (require 'init-filetype-yaml)
 (require 'init-filetype-protobuf)
 
+;; search-online
+(require 'init-search-online)
+
 ;; theme
 (require 'init-theme)
 
