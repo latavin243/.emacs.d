@@ -5,10 +5,10 @@
 
 ;; add sources to package-archives
 (setq package-archives '(
-  ("melpa" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/melpa/")
-  ("gnu" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/gnu/")
-  ("org" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/org/")
-  ("melpa-stable" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/melpa-stable/")
+  ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+  ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
   ))
 
 ;; init

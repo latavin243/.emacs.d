@@ -1,4 +1,3 @@
-
 ;; treemacs, sidebar explorer
 (use-package treemacs
   :ensure t
