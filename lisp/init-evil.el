@@ -15,6 +15,7 @@
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+  ;; (evil-set-initial-state 'org-mode 'emacs)
   )
 
 ;; leader

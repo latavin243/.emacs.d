@@ -12,6 +12,7 @@
   )
   ;; org capture kbd
   (global-set-key (kbd "C-c r") 'org-capture)
+  (add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
  )
 
 (use-package org-pomodoro)
