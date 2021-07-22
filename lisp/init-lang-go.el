@@ -1,4 +1,5 @@
 (use-package go-mode
+  :after (lsp-mode)
   :mode ("\\.go\\'" . go-mode)
   ;; :ensure-system-package (
   ;;   (goimports . "go get -u golang.org/x/tools/cmd/goimports")
@@ -15,6 +16,12 @@
   ;;             ("\C-c \C-g" . go-goto-imports)
   ;;             ("\C-c \C-k" . godoc)
   ;;             ("M-j" . godef-jump)))
+  ;; :config
+  ;; (lsp-register-custom-settings '(
+  ;;   ("gopls.completeUnimported" t t)
+  ;;   ("gopls.staticcheck" t t)))
+  :config
+  (setenv "PATH" (concat (getenv "PATH") ":/Users/qiguo/go/bin"))
   )
 
 (use-package gotest

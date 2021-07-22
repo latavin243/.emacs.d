@@ -51,6 +51,7 @@
 
 ;; theme
 (require 'init-theme)
+(require 'init-icons)
 
 ;; to be split
 ;; (require 'init-packages)

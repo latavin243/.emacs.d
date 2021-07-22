@@ -21,7 +21,7 @@
 ;; leader
 (use-package evil-leader
   :ensure t
-  :after (evil counsel fzf)
+  :after (evil counsel fzf projectile)
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader ",")
@@ -30,7 +30,8 @@
     "rg" 'counsel-rg
     ;; "ff" 'fzf
     ;; "ff" 'counsel-git
-    "ff" 'counsel-find-file
+    ;; "ff" 'counsel-find-file
+    "ff" 'projectile-find-file
     ;; "bb" 'switch-to-buffer
     "bb" 'counsel-switch-buffer
     "w/" 'split-window-right

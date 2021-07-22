@@ -21,6 +21,8 @@
 (use-package lsp-mode
   :hook (go-mode . lsp-deferred)
   :commands (lsp lsp-deferred)
+  :config
+  (setq lsp-headerline-arrow "/")
   )
 
 (provide 'init-completion)
