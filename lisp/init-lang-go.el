@@ -24,6 +24,8 @@
   (setenv "PATH" (concat (getenv "PATH") ":/Users/qiguo/go/bin"))
   )
 
+(use-package go-guru)
+
 (use-package gotest
   :after (go-mode)
   :bind (:map go-mode-map

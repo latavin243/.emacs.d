@@ -14,6 +14,7 @@
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
   (evil-set-undo-system 'undo-tree)
+  (defalias 'forward-evil-word 'forward-evil-symbol)
 
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
