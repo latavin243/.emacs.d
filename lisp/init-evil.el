@@ -3,6 +3,7 @@
 ;; evil mode
 (use-package evil
   :ensure t
+  :after (undo-tree)
   :init
   (setq
    ;; evil-insert-state-cursor 'bar
@@ -12,9 +13,20 @@
   :config
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
+  (evil-set-undo-system 'undo-tree)
+
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
-  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+
+  (evil-define-key 'normal 'global
+    (kbd "C-u") 'evil-scroll-up
+
+    "[b" 'previous-buffer
+    "]b" 'next-buffer
+
+    "u" 'undo-tree-undo
+    (kbd "C-r") 'undo-tree-redo
+  )
   ;; (evil-set-initial-state 'org-mode 'emacs)
   )
 

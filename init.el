@@ -17,6 +17,7 @@
 (require 'init-emacs-control)
 
 ;; core packages
+(require 'init-editing)
 (require 'init-evil)
 (require 'init-completion)
 (require 'init-swiper)

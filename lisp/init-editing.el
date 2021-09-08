@@ -2,7 +2,7 @@
 (use-package undo-tree
   :config
   (turn-on-undo-tree-mode)
-  ;; (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
+  (global-undo-tree-mode)
   )
 
 ;; which key
