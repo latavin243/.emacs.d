@@ -45,4 +45,6 @@
   :after (ivy)
   )
 
+(use-package wgrep)
+
 (provide 'init-swiper)
