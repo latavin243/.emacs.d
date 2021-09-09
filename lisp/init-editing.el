@@ -1,9 +1,5 @@
 ;; undo and redo
-(use-package undo-tree
-  :config
-  (turn-on-undo-tree-mode)
-  (global-undo-tree-mode)
-  )
+(use-package undo-fu)
 
 ;; which key
 (use-package which-key

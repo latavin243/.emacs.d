@@ -3,7 +3,7 @@
 ;; evil mode
 (use-package evil
   :ensure t
-  :after (undo-tree)
+  :after (undo-fu)
   :init
   (setq
    ;; evil-insert-state-cursor 'bar
@@ -13,7 +13,7 @@
   :config
   (evil-mode 1)
   (setcdr evil-insert-state-map nil)
-  (evil-set-undo-system 'undo-tree)
+  (evil-set-undo-system 'undo-fu)
   (defalias 'forward-evil-word 'forward-evil-symbol)
 
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -25,8 +25,8 @@
     "[b" 'previous-buffer
     "]b" 'next-buffer
 
-    "u" 'undo-tree-undo
-    (kbd "C-r") 'undo-tree-redo
+    "u" 'undo-fu-only-undo
+    (kbd "C-r") 'undo-fu-only-redo
   )
   ;; (evil-set-initial-state 'org-mode 'emacs)
   )
