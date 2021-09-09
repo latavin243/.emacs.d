@@ -16,7 +16,7 @@
 
 ;; line number
 (global-linum-mode t)
-(setq linum-format "%d ")
+(setq linum-format " %d")
 (set-face-background 'linum nil)
 
 ;; cursor type

@@ -24,7 +24,13 @@
   (setenv "PATH" (concat (getenv "PATH") ":/Users/qiguo/go/bin"))
   )
 
-(use-package go-guru)
+(use-package go-guru
+  :after (evil)
+  :config
+  (evil-define-key 'normal 'global
+    "gr" 'go-guru-referrers
+  )
+  )
 
 (use-package gotest
   :after (go-mode)
