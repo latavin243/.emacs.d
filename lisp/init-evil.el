@@ -73,6 +73,8 @@
     "rC" 'string-inflection-camelcase
     "rp" 'string-inflection-camelcase
     "rk" 'string-inflection-kebab-case
+
+    "tt" 'eshell
     )
   )
 

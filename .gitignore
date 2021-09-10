@@ -3,6 +3,7 @@ recentf
 transient
 straight
 lisp/flycheck_init-packages.el
+eshell
 
 .cache/
 .lsp-session-v1
