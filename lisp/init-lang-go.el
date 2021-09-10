@@ -1,5 +1,5 @@
 (use-package go-mode
-  :after (lsp-mode)
+  :after (lsp-mode evil)
   :mode ("\\.go\\'" . go-mode)
   ;; :ensure-system-package (
   ;;   (goimports . "go get -u golang.org/x/tools/cmd/goimports")
@@ -22,15 +22,18 @@
   ;;   ("gopls.staticcheck" t t)))
   :config
   (setenv "PATH" (concat (getenv "PATH") ":/Users/qiguo/go/bin"))
+  (evil-define-key 'normal 'global
+    "gr" 'lsp-find-references
+  )
   )
 
-(use-package go-guru
-  :after (evil)
-  :config
-  (evil-define-key 'normal 'global
-    "gr" 'go-guru-referrers
-  )
-  )
+;; (use-package go-guru
+;;   :after (evil)
+;;   :config
+;;   (evil-define-key 'normal 'global
+;;     "gr" 'lsp-find-references
+;;   )
+;;   )
 
 (use-package gotest
   :after (go-mode)
