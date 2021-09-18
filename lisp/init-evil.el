@@ -41,12 +41,13 @@
   (evil-leader/set-key
     "sf" 'counsel-rg
     "rg" 'counsel-rg
-    ;; "ff" 'fzf
+    "ff" 'fzf
     ;; "ff" 'counsel-git
     ;; "ff" 'counsel-find-file
-    "ff" 'projectile-find-file
+    "pf" 'projectile-find-file
     ;; "bb" 'switch-to-buffer
-    "bb" 'counsel-switch-buffer
+    ; "bb" 'counsel-switch-buffer
+    "bb" 'fzf-switch-buffer
     "w/" 'split-window-right
     "w-" 'split-window-below
     ":"  'counsel-M-x
