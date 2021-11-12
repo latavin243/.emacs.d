@@ -6,6 +6,7 @@
   :after (undo-fu)
   :init
   (setq
+   evil-want-C-i-jump nil
    ;; evil-insert-state-cursor 'bar
    ;; evil-normal-state-cursor 'box
    ;; evil-emacs-state-cursor 'bar
