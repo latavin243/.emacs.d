@@ -50,6 +50,11 @@
 ;; search-online
 (require 'init-search-online)
 
+;; tools
+
+;; ppt
+(require 'init-ppt)
+
 ;; theme
 (require 'init-theme)
 (require 'init-icons)
