@@ -1,20 +1,7 @@
-* Emacs Configuration
-
+#+TITLE: Emacs Configuration
 #+OPTIONS: toc:2
 
-Below are some core functions needed.
-
-** vim editing
-1. leader
-2. global & normal command
-3. surround
-4. abolish, (camelCase to snake_case, etc)
-5. visual-star search
-
-** code completion
-1. lsp
-2. golang
-3. python
+* 1. nevigation
 
 ** file search, jump file
 1. fuzzy file name search like fzf
@@ -23,13 +10,7 @@ Below are some core functions needed.
 1. fuzzy code search, e.g. rg
 2. regexp code search
 
-** git
-1. magit
-2. git graph tool
-3. gitgutter
-4. inline git blame
-
-** sidebar file tree
+** sidebar file explorer
 1. show git change
 2. show error
 3. use treemacs
@@ -37,21 +18,8 @@ Below are some core functions needed.
 ** switch project
 1. use projectile
 
-** spell check
-1. camelCase check
-2. ignore some words
-
 ** file browser
 1. like ranger
-
-** org, note taking
-
-** terminal
-
-** narrow window
-1. with expand region
-
-** internet browser
 
 ** jump window
 1. like tmux <prefix>q
@@ -60,9 +28,16 @@ Below are some core functions needed.
 ** easymotion
 1. like vim-easymotion
 
-** floatwindow
+* 2. display, ui
 
-** snippets
+** welcome page
+1. recent files
+2. recent files in current project
+3. like vim-startify
+
+** floatwindow
+1. support narrow-region
+2. tmp terminal
 
 ** bottom bar
 1. like vim-airline
@@ -71,6 +46,66 @@ Below are some core functions needed.
 ** theme
 1. srcery
 
-** other
-1. tabular
+* 3. vim-like editing
 
+** vim editing
+1. leader
+2. global & normal command
+3. surround
+4. abolish, (camelCase to snake_case, etc)
+5. visual-star search
+
+** org, md, note taking
+1. execute code block, e.g. python
+2. use org-babel
+3. brower preview (like vim markdown-preview)
+
+** narrow window
+1. with expand region
+
+** format
+1. tabular
+2. split line by (e.g. comma) (like splitjoin.vim)
+3. table-mode
+
+** others
+1. visual numbering (like VisIncr)
+2. buffer management (choose, organize and confirm-close buffers, like grbi)
+3. register content display
+4. comment toggle
+5. search in project and edit all matches
+
+* 4. coding
+
+** code syntax, completion
+1. lsp
+2. company
+3. golang
+4. python
+
+** spell check
+1. camelCase check
+2. ignore some words
+
+** code format
+1. json format
+
+** snippets
+
+** playground
+
+** runner
+1. like RunVimRun function
+
+* 5. dev tools
+
+** git
+1. magit
+2. git graph tool
+3. gitgutter
+4. inline git blame
+
+** terminal
+1. eshell or vterm
+
+** copilot?
