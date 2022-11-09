@@ -5,10 +5,10 @@
 
 ;; important packages
 ;; vim related
-(straight-use-package 'window-numbering)
+(use-package window-numbering)
 ;; others
-(straight-use-package 'exec-path-from-shell)
-(straight-use-package 'reveal-in-osx-finder)
+(use-package exec-path-from-shell)
+(use-package reveal-in-osx-finder)
 
 ;; cl - Common Lisp Extension
 (require 'cl)
@@ -23,7 +23,6 @@
 
 ;; smartparens config
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(straight-use-package 'smartparens)
 (use-package smartparens
   :ensure t
   :config
@@ -66,7 +65,7 @@
   )
 
 ;; iedit
-(straight-use-package 'iedit)
+(use-package iedit)
 ;; (global-set-key (kbd "M-s e") 'iedit-mode)
 ;; c-; will do
 
@@ -78,7 +77,6 @@
   )
 
 ;; yasnippet config
-(straight-use-package 'yasnippet)
 (use-package yasnippet
   :ensure t
   :config
@@ -97,7 +95,6 @@
   )
 
 ;; undo and redo
-(straight-use-package 'undo-tree)
 (use-package undo-tree
   :ensure t
   :config
@@ -106,7 +103,6 @@
   )
 
 ;; which key
-(straight-use-package 'which-key)
 (use-package which-key
   :ensure t
   :config
@@ -336,7 +332,6 @@
     )
   )
 
-(straight-use-package 'projectile)
 (use-package projectile
   :ensure t
   :config
