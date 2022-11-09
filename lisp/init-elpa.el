@@ -6,8 +6,8 @@
 ;; add sources to package-archives
 (setq package-archives '(
   ("org" . "http://orgmode.org/elpa/")
-  ("gnu"   . "http://elpa.emacs-china.org/gnu/")
-  ("melpa" . "http://elpa.emacs-china.org/melpa/")
+  ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
   ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
   ))
 

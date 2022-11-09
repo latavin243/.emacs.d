@@ -2,6 +2,18 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'package)
+(add-to-list 'package-archives
+             '("Melpa" . "https://melpa.org/packages/") t)
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp/use-package")
+(require 'use-package)
+
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               "~/.emacs.d/site-lisp/use-package/"))
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 ;; (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp")))
 
@@ -11,7 +23,7 @@
 (require 'init-better-defaults)
 (require 'init-ui)
 ;; (require 'init-keybindings)
-(require 'init-benchmark)
+;; (require 'init-benchmark)
 
 (require 'init-evil)
 (require 'init-lsp)

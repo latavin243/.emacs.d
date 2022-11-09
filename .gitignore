@@ -7,6 +7,7 @@ lisp/flycheck_init-packages.el
 .cache/
 .lsp-session-v1
 projectile-bookmarks.eld
+.local
 
 custom.el
 bookmarks
