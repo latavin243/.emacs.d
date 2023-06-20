@@ -15,9 +15,10 @@
 (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
 ;; line number
-(global-linum-mode t)
+;; (global-linum-mode t)
+(global-display-line-numbers-mode t)
 (setq linum-format "%d ")
-(set-face-background 'linum nil)
+;; (set-face-background 'linum nil)
 
 ;; cursor type
 ;; (setq cursor-type 'bar)
