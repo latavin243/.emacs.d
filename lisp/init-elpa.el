@@ -25,11 +25,6 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; ensure use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 ;; use package config
 (eval-and-compile
     (setq use-package-always-ensure t)

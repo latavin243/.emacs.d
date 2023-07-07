@@ -1,3 +1,4 @@
+;; === golang
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode)
   ;; :ensure-system-package (
@@ -33,4 +34,19 @@
   :after (go-mode)
   )
 
-(provide 'init-golang)
+;; === json
+(use-package json-mode
+  :ensure t
+  )
+
+;; === yaml
+(use-package yaml-mode
+  :ensure t
+  )
+
+;; === protobuf
+(use-package protobuf-mode
+  :ensure t
+  )
+
+(provide 'init-language)
