@@ -1,34 +1,41 @@
 #+TITLE: Emacs Configuration
 #+OPTIONS: toc:2
 
-* 1. nevigation
+* 0. package manager
 
-** file search, jump file
-1. fuzzy file name search like fzf
+** use-package
+
+* 1. navigation
+
+** file search
+1. fzf, fuzzy file name search
 
 ** code search
 1. fuzzy code search, e.g. rg
 2. regexp code search
 
 ** sidebar file explorer
-1. show git change
-2. show error
-3. use treemacs
+1. treemacs
+2. show git change
+3. show error
 
-** switch project
-1. use projectile
+** project swtich
+1. projectile
+
+** window jump
+1. like tmux <prefix>q
+2. use window-numbering
+
+** buffer / tab jump
+1. setup key-bindings
+
+** code jump
+1. like vim-easymotion
 
 ** file browser
 1. like ranger
 
-** jump window
-1. like tmux <prefix>q
-2. use window-numbering, etc
-
-** easymotion
-1. like vim-easymotion
-
-* 2. display, ui
+* 2. apperance
 
 ** welcome page
 1. recent files
@@ -37,16 +44,16 @@
 
 ** floatwindow
 1. support narrow-region
-2. tmp terminal
+2. float terminal
 
 ** bottom bar
 1. like vim-airline
-2. use speedbar?
+2. e.g. doomline, speedbar
 
 ** theme
 1. srcery
 
-* 3. vim-like editing
+* 3. editing
 
 ** vim editing
 1. leader
@@ -55,7 +62,7 @@
 4. abolish, (camelCase to snake_case, etc)
 5. visual-star search
 
-** org, md, note taking
+** note taking (org, md, etc)
 1. execute code block, e.g. python
 2. use org-babel
 3. brower preview (like vim markdown-preview)
@@ -75,7 +82,7 @@
 4. comment toggle
 5. search in project and edit all matches
 
-* 4. coding
+* 4. coding & language
 
 ** code syntax, completion
 1. lsp
@@ -108,4 +115,4 @@
 ** terminal
 1. eshell or vterm
 
-** copilot?
+** copilot

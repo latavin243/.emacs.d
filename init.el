@@ -9,16 +9,20 @@
 (require 'use-package)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-;; (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "lisp")))
 
 ;; === load config files
-(require 'init-elpa)
-(require 'init-defaults)
 
+;; package manager
+(require 'init-elpa)
+
+;; basic
+(require 'init-defaults)
 (require 'init-basic)
+
+;; apperance
 (require 'init-apperance)
-;; (require 'init-keybindings)
-;; (require 'init-benchmark)
+
+;; editing (vim)
 (require 'init-evil)
 
 ;; navigation
@@ -26,10 +30,12 @@
 (require 'init-treemacs)
 (require 'init-swiper)
 
-;; dev
+;; coding (language, spell check, snippet)
+(require 'init-language)
+
+;; dev tool (git, note)
 (require 'init-git)
 (require 'init-org)
-(require 'init-language)
 
 ;; to be split
 ;; (require 'init-packages)
