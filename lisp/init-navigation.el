@@ -5,6 +5,10 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   )
 
+(use-package fzf
+  :ensure t
+  )
+
 (use-package auto-highlight-symbol
   :ensure t
   )
@@ -34,7 +38,8 @@
   (evil-leader/set-key
     "qq" 'ace-window
     "ww" 'ace-window
-    ))
+    )
+  )
 
 
 (provide 'init-navigation)

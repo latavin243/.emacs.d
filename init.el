@@ -19,9 +19,7 @@
 (require 'init-apperance)
 ;; (require 'init-keybindings)
 ;; (require 'init-benchmark)
-
 (require 'init-evil)
-(require 'init-lsp)
 
 ;; navigation
 (require 'init-navigation)

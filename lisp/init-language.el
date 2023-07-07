@@ -1,16 +1,25 @@
+;; === lsp
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  )
+
 ;; === golang
 (use-package go-mode
+  :after (lsp-mode)
   :mode ("\\.go\\'" . go-mode)
   ;; :ensure-system-package (
   ;;   (goimports . "go get -u golang.org/x/tools/cmd/goimports")
   ;;   (godef . "go get -u github.com/rogpeppe/godef"))
   :init
-  (setq gofmt-command "goimports")
+  (setq lsp-go-use-gofumpt t)
+  (lsp-register-custom-settings '(("gopls.gofumpt" t)))
+  ;; (setq gofmt-command "goimports")
   (defvar tab-width 4)
   (defvar indent-tabs-mode t)
   :hook ((go-mode . lsp-deferred)
          (before-save . lsp-format-buffer)
-         (before-save . lsp-organize-imports))
+         (before-save . lsp-organize-imports)
+         (before-save . gofmt-before-save))
   ;; :bind (:map go-mode-map
   ;;             ("\C-c \C-c" . compile)
   ;;             ("\C-c \C-g" . go-goto-imports)
