@@ -20,6 +20,10 @@
          (before-save . lsp-format-buffer)
          (before-save . lsp-organize-imports)
          (before-save . gofmt-before-save))
+  :config
+  (evil-leader/set-key
+    "gr" 'go-guru-referrers
+    )
   ;; :bind (:map go-mode-map
   ;;             ("\C-c \C-c" . compile)
   ;;             ("\C-c \C-g" . go-goto-imports)

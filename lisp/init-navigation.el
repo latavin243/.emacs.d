@@ -13,6 +13,7 @@
   :ensure t
   )
 
+;; jump word
 (use-package ace-jump-mode
   :ensure t
   :after (evil)
@@ -29,7 +30,7 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   )
 
-
+;; jump window
 (use-package ace-window
   :ensure t
   :after (evil-leader)
@@ -40,6 +41,5 @@
     "ww" 'ace-window
     )
   )
-
 
 (provide 'init-navigation)

@@ -28,15 +28,21 @@
     "sf" 'counsel-rg
     "rg" 'counsel-rg
     "ff" 'fzf
-    "bb" 'switch-to-buffer
+
     "w/" 'split-window-right
     "w-" 'split-window-below
     ":"  'counsel-M-x
     "wM" 'delete-other-windows
+    "lf" 'imenu
+
+    "bb" 'switch-to-buffer
+    "[b" 'previous-buffer
+    "]b" 'next-buffer
+
+    ;; narrow
     "nn" 'narrow-to-region
     "nw" 'widen
     "nf" 'narrow-to-defun
-    "lf" 'imenu
 
     ;; commenter
     "cc" 'evilnc-comment-or-uncomment-lines
@@ -50,11 +56,16 @@
     "\\" 'evilnc-comment-operator
 
     ;; string-inflection
-    "rs" 'string-inflection-underscore
-    "rc" 'string-inflection-lower-camelcase
-    "rC" 'string-inflection-camelcase
-    "rp" 'string-inflection-camelcase
-    "rk" 'string-inflection-kebab-case
+    ;; "rs" 'string-inflection-underscore
+    ;; "rc" 'string-inflection-lower-camelcase
+    ;; "rC" 'string-inflection-camelcase
+    ;; "rp" 'string-inflection-camelcase
+    ;; "rk" 'string-inflection-kebab-case
+    "rs" '(lambda () (interactive) (string-inflection-underscore) (evil-backward-word-begin))
+    "rc" '(lambda () (interactive) (string-inflection-lower-camelcase) (evil-backward-word-begin))
+    "rC" '(lambda () (interactive) (string-inflection-camelcase) (evil-backward-word-begin))
+    "rp" '(lambda () (interactive) (string-inflection-camelcase) (evil-backward-word-begin))
+    "rk" '(lambda () (interactive) (string-inflection-kebab-case) (evil-backward-word-begin))
     )
   )
 
