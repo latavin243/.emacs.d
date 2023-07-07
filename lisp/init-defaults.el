@@ -158,5 +158,5 @@
     (setq mac-command-modifier 'meta)
     (setq mac-option-modifier 'none))
 
-(provide 'init-better-defaults)
-;;; init-better-defaults.el ends here
+(provide 'init-defaults)
+;;; init-defaults.el ends here
