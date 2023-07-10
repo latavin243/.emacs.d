@@ -54,4 +54,4 @@
   :ensure t
   :hook (after-init . doom-modeline-mode))
 
-(provide 'init-apperance)
+(provide 'init-decoration)

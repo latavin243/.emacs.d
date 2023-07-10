@@ -19,8 +19,8 @@
 (require 'init-defaults)
 (require 'init-basic)
 
-;; apperance
-(require 'init-apperance)
+;; decoration
+(require 'init-decoration)
 
 ;; editing (vim)
 (require 'init-evil)

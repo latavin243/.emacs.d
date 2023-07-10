@@ -35,7 +35,7 @@
 ** file browser
 1. like ranger
 
-* 2. apperance
+* 2. decoration
 
 ** welcome page
 1. recent files
