@@ -1,5 +1,6 @@
 elpa
 recentf
+auto-save-list
 transient
 straight
 lisp/flycheck_init-packages.el
