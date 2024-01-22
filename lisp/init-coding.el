@@ -1,7 +1,16 @@
-;; === lsp
+;; ** code syntax, completion
+;; ** spell check
+;; ** code format
+;; ** snippets
+;; ** playground
+;; ** runner
+
+;; code syntax & completion
+;; lsp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   )
+;; company
 
 ;; === golang
 (use-package go-mode
@@ -62,4 +71,21 @@
   :ensure t
   )
 
-(provide 'init-language)
+
+;; spell check
+;; camelCase check
+;; ignore some words
+
+;; code format
+;; json format
+
+;; snippets
+
+;; playground
+
+;; runner
+
+;; org
+
+;; end
+(provide 'init-coding)

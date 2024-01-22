@@ -5,7 +5,12 @@
 
 ** use-package
 
-* 1. navigation
+* 1. basic
+
+1. restart
+2. benchmark-init
+
+* 2. navigation
 
 ** file search
 1. fzf, fuzzy file name search
@@ -35,25 +40,25 @@
 ** file browser
 1. like ranger
 
-* 2. decoration
+* 3. decoration
 
-** welcome page
+** 3.1. theme
+1. srcery
+
+** 3.2. welcome page
 1. recent files
 2. recent files in current project
 3. like vim-startify
 
-** floatwindow
-1. support narrow-region
-2. float terminal
-
-** bottom bar
+** 3.3. bottom status bar
 1. like vim-airline
 2. e.g. doomline, speedbar
 
-** theme
-1. srcery
+** 3.4. floatwindow
+1. support narrow-region
+2. float terminal
 
-* 3. editing
+* 4. editing
 
 ** vim editing
 1. leader
@@ -82,7 +87,7 @@
 4. comment toggle
 5. search in project and edit all matches
 
-* 4. coding & language
+* 5. coding (& language)
 
 ** code syntax, completion
 1. lsp
@@ -104,7 +109,7 @@
 ** runner
 1. like RunVimRun function
 
-* 5. dev tools
+* 6. dev tools
 
 ** git
 1. magit

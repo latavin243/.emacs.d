@@ -1,3 +1,11 @@
+;; ** file search
+(use-package fzf
+  :ensure t
+  )
+
+;; ** code search TODO
+;; ** sidebar file explorer TODO
+;; ** project swtich
 (use-package projectile
   :ensure t
   :config
@@ -5,15 +13,21 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   )
 
-(use-package fzf
+;; ** window jump
+(use-package ace-window
   :ensure t
+  :after (evil-leader)
+  :config
+  (global-set-key (kbd "M-o") 'ace-window)
+  (evil-leader/set-key
+    "qq" 'ace-window
+    "ww" 'ace-window
+    )
   )
+(use-package window-numbering)
 
-(use-package auto-highlight-symbol
-  :ensure t
-  )
-
-;; jump word
+;; ** buffer / tab jump TODO
+;; ** code jump
 (use-package ace-jump-mode
   :ensure t
   :after (evil)
@@ -30,16 +44,9 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   )
 
-;; jump window
-(use-package ace-window
+(use-package auto-highlight-symbol
   :ensure t
-  :after (evil-leader)
-  :config
-  (global-set-key (kbd "M-o") 'ace-window)
-  (evil-leader/set-key
-    "qq" 'ace-window
-    "ww" 'ace-window
-    )
   )
 
+;; end
 (provide 'init-navigation)

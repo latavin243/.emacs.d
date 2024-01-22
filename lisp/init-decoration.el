@@ -1,27 +1,8 @@
-(if (display-graphic-p)
-    (progn
-      ;; hide tool-bar and scroll-bar
-      (tool-bar-mode -1)
-      (scroll-bar-mode -1)
-
-      ;; skip startup page
-      (setq inhibit-splash-screen t)
-
-      ;; cursor style
-      (setq-default cursor-type 'bar)
-
-      ;; fullscreen startup
-      (setq initial-frame-alist (quote ((fullscreen . maximized))))
-
-      ;; highlight current line
-      (global-hl-line-mode t)
-      ))
-
-;; theme
+;; 2.1. theme
 (use-package srcery-theme)
 (load-theme 'srcery t)
 
-;; startup dashboard
+;; 2.2. welcome page
 (use-package dashboard
   :ensure t
   :init
@@ -49,9 +30,34 @@
     (setq column-number-mode t)
     ))
 
+;; 2.3. bottom status bar
 ;; doom modeline
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
 
+;; 2.4. floatwindow
+
+
+;; others
+(if (display-graphic-p)
+    (progn
+      ;; hide tool-bar and scroll-bar
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+
+      ;; skip startup page
+      (setq inhibit-splash-screen t)
+
+      ;; cursor style
+      (setq-default cursor-type 'bar)
+
+      ;; fullscreen startup
+      (setq initial-frame-alist (quote ((fullscreen . maximized))))
+
+      ;; highlight current line
+      (global-hl-line-mode t)
+      ))
+
+;; end
 (provide 'init-decoration)
