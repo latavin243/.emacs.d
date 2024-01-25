@@ -1,9 +1,11 @@
 ;; ** vim editing
+(require 'init-evil)
+
 ;; ** note taking (org, md, etc)
 ;; ** narrow window
 ;; ** format
 ;; ** others
-(require 'init-evil)
+
 ;; highlight TODO
 (use-package hl-todo
   :ensure t
@@ -19,13 +21,17 @@
       ("DEPRECATED" font-lock-doc-face bold))
     )
   )
+
 ;; yasnippet config
 (use-package yasnippet
   :ensure t
   :config
+  (add-to-list 'load-path
+              "~/.config/emacs/plugins/yasnippet")
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   )
+
 ;; auto-yasnippet
 (use-package auto-yasnippet
   :ensure t

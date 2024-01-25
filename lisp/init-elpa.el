@@ -8,8 +8,8 @@
   ("org" . "http://orgmode.org/elpa/")
   ("melpa" . "https://melpa.org/packages/")
   ("melpa-stable" . "https://stable.melpa.org/packages/")
-  ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-  ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;; ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ;; ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
   ))
 
 ;; init
