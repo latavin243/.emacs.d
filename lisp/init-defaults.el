@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(server-mode 1)
+
 ;; disable startup page
 (setq inhibit-startup-screen t)
 
@@ -40,14 +42,12 @@
 (setq auto-save-default nil)
 
 ;; recent file
+(require 'recentf)
 (recentf-mode 1)
 (defvar recentf-max-menu-items 25)
 
 ;; highlight matching brackets
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-
-;; show recent files
-(recentf-mode t)
 
 ;; delete selected content
 (delete-selection-mode t)
@@ -127,7 +127,7 @@
 (defun open-init-file()
   "Opens init.el config."
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/.config/emacs/init.el"))
 
 ;; 4 spaces to replace table
 (setq-default indent-tabs-mode nil)
