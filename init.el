@@ -16,12 +16,12 @@
 (require 'init-defaults)
 (require 'init-basic)
 
-;; * 2. decoration
+;; * 2. ui
 ;; ** welcome page
 ;; ** floatwindow
 ;; ** bottom bar
 ;; ** theme
-(require 'init-decoration)
+(require 'init-ui)
 
 ;; * 3. navigation
 (require 'init-navigation)

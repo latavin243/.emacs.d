@@ -40,7 +40,7 @@
 ** file browser
 1. like ranger
 
-* 3. decoration
+* 3. ui
 
 ** 3.1. theme
 1. srcery

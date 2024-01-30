@@ -1,6 +1,30 @@
 ;; 2.1. theme
-(use-package srcery-theme)
-(load-theme 'srcery t)
+
+(use-package srcery-theme
+  :config
+  (load-theme 'srcery t)
+)
+
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (doom-themes-org-config)
+;;   (let ((theme (if (display-graphic-p)
+;;                    'doom-one
+;;                  'doom-Iosvkem)))
+;;     (load-theme theme t)))
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :custom
+  (doom-modeline-irc nil)
+  (doom-modeline-mu4e nil)
+  (doom-modeline-gnus nil)
+  (doom-modeline-github nil)
+  (doom-modeline-persp-name nil)
+  (doom-modeline-unicode-fallback t)
+  (doom-modeline-enable-word-count nil))
 
 ;; 2.2. welcome page
 (use-package dashboard
@@ -60,4 +84,4 @@
       ))
 
 ;; end
-(provide 'init-decoration)
+(provide 'init-ui)
