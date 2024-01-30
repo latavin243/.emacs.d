@@ -6,21 +6,21 @@
 ;; ** format
 ;; ** others
 
-;; highlight TODO
-(use-package hl-todo
-  :ensure t
-  :defer t
-  :hook (prog-mode . hl-todo-mode)
-  :config
-  (defvar hl-todo-keyword-faces
-    `(("TODO"       warning bold)
-      ("FIXME"      error bold)
-      ("HACK"       font-lock-constant-face bold)
-      ("REVIEW"     font-lock-keyword-face bold)
-      ("NOTE"       success bold)
-      ("DEPRECATED" font-lock-doc-face bold))
-    )
-  )
+;; ;; highlight TODO
+;; (use-package hl-todo
+;;   :ensure t
+;;   :defer t
+;;   :hook (prog-mode . hl-todo-mode)
+;;   :config
+;;   (defvar hl-todo-keyword-faces
+;;     `(("TODO"       warning bold)
+;;       ("FIXME"      error bold)
+;;       ("HACK"       font-lock-constant-face bold)
+;;       ("REVIEW"     font-lock-keyword-face bold)
+;;       ("NOTE"       success bold)
+;;       ("DEPRECATED" font-lock-doc-face bold))
+;;     )
+;;   )
 
 ;; yasnippet config
 (use-package yasnippet
@@ -42,13 +42,13 @@
   (global-set-key (kbd "H-y") #'aya-expand)
   )
 
-;; undo and redo
-(use-package undo-tree
-  :ensure t
-  :config
-  (turn-on-undo-tree-mode)
-  ;; (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
-  )
+;; ;; undo and redo
+;; (use-package undo-tree
+;;   :ensure t
+;;   :config
+;;   (turn-on-undo-tree-mode)
+;;   ;; (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
+;;   )
 
 ;; end
 (provide 'init-editing)
