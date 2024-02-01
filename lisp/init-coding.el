@@ -10,7 +10,6 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   )
-;; company
 
 ;; === golang
 (use-package go-mode

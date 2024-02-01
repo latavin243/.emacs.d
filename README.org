@@ -91,9 +91,8 @@
 
 ** code syntax, completion
 1. lsp
-2. company
-3. golang
-4. python
+2. golang
+3. python
 
 ** spell check
 1. camelCase check
